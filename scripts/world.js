@@ -1,23 +1,5 @@
-function readTextFile(file) {
-	var rawFile = new XMLHttpRequest();
-	rawFile.open("GET", file, false);
-	rawFile.onreadystatechange = function () {
-		if (rawFile.readyState === 4) {
-			if (rawFile.status === 200 || rawFile.status == 0) {
-				var allText = rawFile.responseText;
-				alert(allText);
-			}
-		}
-	}
-	rawFile.send(null);
-}
-
-
 function loadWorld() {
-	//readTextFile("levels/testlevel.txt");
-
-
-
+	loadFromFile(world, "levels/level1.txt");
 
 	defaultWorld();
 }
@@ -75,7 +57,7 @@ const velGen = n => Math.sinh(n)
 const stars = Array(1000).fill().map(e => e = {
 	xvel: velGen(Math.random() * 10),
 	yvel: velGen(Math.random() * 10),
-	size: Math.random()*2
+	size: Math.random() * 2
 });
 
 function worldUpdates() {

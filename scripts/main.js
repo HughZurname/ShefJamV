@@ -12,19 +12,7 @@
 		window.addEventListener("keydown", keypress, false);
 		window.addEventListener("keyup", keyup, false);
 
-
-		//initalisation
-		function init() {
-		    stage = new PIXI.Container();
-		    renderer = PIXI.autoDetectRenderer(
-		        1024,
-		        512, {
-		            view: document.getElementById("game-canvas")
-		        }
-		    );
-		    loadWorld();
-
-
+		function continueLoad(){
 		    let floortextures = {};
 		    let spacetexture = PIXI.Texture.fromImage("assets/images/environment/space.png");
 		    space = new PIXI.Sprite(spacetexture);
@@ -38,16 +26,28 @@
 		    playersprite.position.y = 0;
 		    stage.addChild(playersprite);
 
-		    for (i = 0; i < floors.length; i++) {
-		        let cfloor = floors[i];
-		        let panel = PIXI.Texture.fromImage("assets/images/environment/" + cfloor.texture + ".png");
-		        panelsprite = new PIXI.Sprite(panel);
-		        panelsprite.position.x = cfloor.x;
-		        panelsprite.position.y = cfloor.y;
-		        stage.addChild(panelsprite);
-
+		    	
+  		    for (i = 0; i < 1000; i++) {
+		        let startex = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");  
+			drawnstar = new PIXI.Sprite(startex);	   	 
+			drawnstar.position.x = Math.random()*1024;
+		   	drawnstar.position.y = Math.random()*512;
+		    	stage.addChild(drawnstar);
 		    }
+		    
 		    requestAnimationFrame(update);
+		}
+		//initalisation
+		function init() {
+		    stage = new PIXI.Container();
+		    renderer = PIXI.autoDetectRenderer(
+		        1024,
+		        512, {
+		            view: document.getElementById("game-canvas")
+		        }
+		    );
+		    loadWorld();
+		   
 		}
 
 
@@ -64,6 +64,10 @@
 
 		    //RENDER
 			//console.log("rendering");
+			render();
+
+
+
 		    renderer.render(stage);
 		    requestAnimationFrame(update);
 		}
