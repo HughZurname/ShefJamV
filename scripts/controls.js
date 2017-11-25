@@ -29,7 +29,7 @@
 
 function onTheGround(xloc, yloc){	
               //  console.log(xloc+","+yloc+" floors:"+world.floorlist);
-		var toreturn = checkCollision(xloc,yloc,1,1,world.floorlist);
+		var toreturn = checkCollision(xloc,yloc,player.width,1,world.floorlist);
 	//	console.log(toreturn);
 
 		return toreturn;
@@ -40,7 +40,7 @@ function onTheGround(xloc, yloc){
 			player.yvel=-15 	;
 		}
 	}
-	var speed = 5;
+	var speed = 10;
 	function move(side){
 		if(Math.abs(player.xvel)<=5){
 			player.xvel = side*speed;

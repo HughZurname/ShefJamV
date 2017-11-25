@@ -26,6 +26,10 @@ function loadLevel(fileitem,continueornot){
 	world.floorlist = floors;
 	world.interacts = inters;
 	world.entitylist = entities;
+	if(typeof entitycontainer !== 'undefined'){
+  		entitycontainer.destroy();
+	}
+	entitycontainer = new PIXI.Container();
 	let lines = fileitem.split("\n");
 	for(let l = 0; l<lines.length; l++){
 		if(lines[l].charAt(0)!="#"){
@@ -47,9 +51,21 @@ function loadLevel(fileitem,continueornot){
 				console.log("added interact");				
 				world.interacts.push(exit);
 			}
+			if(type=="enemy"){
+				let texture = PIXI.Texture.fromImage(text);
+				    texturesprite = new PIXI.Sprite(texture);
+				   texturesprite.position.x = 0;
+				    texturesprite.position.y = 0;
+				    entitycontainer.addChild(texturesprite);
+				let enemy = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,xvel:0,yvel:0,entitytype:"enemy",sprite:texturesprite};
+				console.log("added enemy");				
+				world.entitylist.push(enemy);
+			}
 		}
 	}
 	//render 
+
+	stage.addChild(entitycontainer);
 	if(typeof floorcontainer !== 'undefined'){
   		floorcontainer.destroy();
 	}
