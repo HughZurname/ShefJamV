@@ -63,6 +63,14 @@ function defaultWorld() {
 
 }
 
+function calculateDistance(playerX,playerY,entityX,entityY)
+{
+	var horizontalDis = playerX - entityX;
+	var verticalDis = playerY - entityY;
+
+	var realDistance = Math.sqrt(Math.Pow(horizontalDis, 2) + Math.Pow(verticalDis,2));
+	return realDistance;
+}
 
 
 function worldUpdates() {
@@ -75,5 +83,14 @@ function worldUpdates() {
 				player.y = interactable.spawny;
 			}
 		}
+	}
+
+	for(let m = 0; m<world.entities.length;m++){
+		let entity = world.entities[m];
+		if (entity.entitytype == "enemy"){
+			var distanceFrom = calculateDistance(playerX, playerY, entityX, entityY);
+			console.log("Distance from bug = " + distanceFrom);
+		}
+		
 	}
 }
