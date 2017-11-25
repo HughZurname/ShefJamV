@@ -88,6 +88,7 @@ function worldUpdates() {
 	for(let m = 0; m<world.entitylist.length;m++){
 		let entity = world.entitylist[m];
 		if (entity.entitytype == "enemy"){
+//			Use object atributes istead of variable names
 			var distanceFrom = calculateDistance(player.x, player.y, entity.x, entity.y);
 			console.log("Distance from bug = " + distanceFrom);
 		}
