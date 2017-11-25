@@ -1,12 +1,12 @@
 
 function whatCollided(xloc, yloc,ewidth,eheight,currentfloorlist){
 
-		for(var f=0;f<currentfloorlist.length;f++){
-			var currentfloor = currentfloorlist[f];
-			var basex = currentfloor.x;
-			var basey = currentfloor.y;
-			var width  = currentfloor.width;
-			var height = currentfloor.height;
+		for(let f=0;f<currentfloorlist.length;f++){
+			let currentfloor = currentfloorlist[f];
+			let basex = currentfloor.x;
+			let basey = currentfloor.y;
+			let width  = currentfloor.width;
+			let height = currentfloor.height;
 			if((xloc>=basex || xloc+ewidth>=basex)  && (xloc<=basex+width || xloc+ewidth<=basex+width)
 				&& (yloc>=basey || yloc+eheight>=basey) && (yloc<=basey+height||yloc+eheight<=basey+height)){
 				return currentfloor;
@@ -15,12 +15,12 @@ function whatCollided(xloc, yloc,ewidth,eheight,currentfloorlist){
 	}	
 	function checkCollision(xloc, yloc,ewidth,eheight,currentfloorlist){
 
-		for(var f=0;f<currentfloorlist.length;f++){
-			var currentfloor = currentfloorlist[f];
-			var basex = currentfloor.x;
-			var basey = currentfloor.y;
-			var width  = currentfloor.width;
-			var height = currentfloor.height;
+		for(let f=0;f<currentfloorlist.length;f++){
+			let currentfloor = currentfloorlist[f];
+			let basex = currentfloor.x;
+			let basey = currentfloor.y;
+			let width  = currentfloor.width;
+			let height = currentfloor.height;
 			if((xloc>=basex || xloc+ewidth>=basex)  && (xloc<=basex+width || xloc+ewidth<=basex+width)
 				&& (yloc>=basey || yloc+eheight>=basey) && (yloc<=basey+height||yloc+eheight<=basey+height)){
 				return true;
@@ -33,7 +33,7 @@ function whatCollided(xloc, yloc,ewidth,eheight,currentfloorlist){
 
 
 	 function physicsUpdate(){
-		for(var e = 0; e<entities.length; e++){
+		for(let e = 0; e<entities.length; e++){
 			entity = entities[e];
 
 			//physics
@@ -45,7 +45,7 @@ function whatCollided(xloc, yloc,ewidth,eheight,currentfloorlist){
 			entity.xvel*=0.9;
 			
 			//collision
-			var floorlist = world.floorlist;
+			let floorlist = world.floorlist;
 			if(checkCollision(entity.x+entity.xvel,entity.y+entity.yvel,entity.width,entity.height,floorlist)){
 							
 				if(checkCollision(entity.x+entity.xvel,entity.y,entity.width,entity.height,floorlist)){

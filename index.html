@@ -1,90 +1,28 @@
 <html>
-   <head>
-      <meta charset="UTF-8">
-      <title>Powerless</title>
-      <style>
-         body { background-color: #000000; }
-         canvas { background-color: #222222; }
-      </style>
-   </head>
-   <body onload="init();">
-      <div align="center">
-         <canvas id="game-canvas" width="1024" height="512"></canvas>
-      </div>
-      <script src="pixi.js"></script>
-      <script src="scripts/physics.js"></script>
-      <script src="scripts/controls.js"></script>
-      <script src="scripts/world.js"></script>
-      <script>
-	//initialisation	
-	var keylist = new Array();
-	var entities = new Array();
-	var floors = new Array();
-	var world = {entitylist:entities,floorlist:floors};	
-        var player = {};
-	
-	//event listener
-	window.addEventListener("keydown",keypress,false);
-	window.addEventListener("keyup",keyup,false);	
-	
 
-	//initalisation
-         function init() {
- 	    stage = new PIXI.Container();
-            renderer = PIXI.autoDetectRenderer(
-			   1024,
-               512,
-               {view: document.getElementById("game-canvas")}
-            );
-		loadWorld();
-          
-
-		var floortextures = {};
-		var spacetexture = PIXI.Texture.fromImage("assets/images/space.png");
-		space = new PIXI.Sprite(spacetexture);
-		space.position.x = 0;
-		space.position.y = 0;
-            	stage.addChild(space);
-
-		var playertexture = PIXI.Texture.fromImage("assets/images/shittybox.png");
-		playersprite = new PIXI.Sprite(playertexture);
-		playersprite.position.x = 0;
-		playersprite.position.y = 0;
-            	stage.addChild(playersprite);
-
-		for(i=0; i<floors.length; i++){
-			var cfloor = floors[i];
-			var panel = PIXI.Texture.fromImage("assets/images/"+cfloor.texture+".png");
-			panelsprite = new PIXI.Sprite(panel);
-			panelsprite.position.x = cfloor.x;
-			panelsprite.position.y = cfloor.y;
-		    	stage.addChild(panelsprite);
-			
+<head>
+	<meta charset="UTF-8">
+	<title>Powerless</title>
+	<style>
+		body {
+			background-color: #000000;
 		}
-            	requestAnimationFrame(update);
-         }	
 
-	
-         function update() {
+		canvas {
+			background-color: #222222;
+		}
+	</style>
+</head>
 
-		//input
-		keycheck();
-		//world update
-		worldUpdates();
-		
-		//physics
-	   	 physicsUpdate();
-		
+<body onload="init();">
+	<div align="center">
+		<canvas id="game-canvas" width="1024" height="512"></canvas>
+	</div>
+	<script src="pixi.js"></script>
+	<script src="scripts/physics.js"></script>
+	<script src="scripts/controls.js"></script>
+	<script src="scripts/world.js"></script>
+	<script src="scripts/main.js"></script>
+</body>
 
-
-	
-	   
-				
-			//RENDER
-            renderer.render(stage);
-            requestAnimationFrame(update);
-         }
-
-      </script>
-   </body>
 </html>
