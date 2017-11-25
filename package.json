@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/HughZurname/ShefJamV#readme",
   "dependencies": {
+    "http-server": "^0.10.0",
     "pixi.js": "^4.6.1"
   }
 }
