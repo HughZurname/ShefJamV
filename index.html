@@ -14,13 +14,24 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.0.0/pixi.min.js"></script>
       <script>
 	var entities = new Array();
-	var world = {entitylist:entities};
+	var floors = new Array();
+	var world = {entitylist:entities,floorlist:floors};
 
+
+	
+	window.addEventListener("keyPress",function (){
+		console.log(keypress);
+
+
+	});
 
 
          function init() {
-		var player = {x: 50, y: 50,entitytype:"player"};
+		var player = {x: 50, y: 50,xvel:0,yvel:0,entitytype:"player"};
 		entities.push(player);
+
+		var testfloor = {x: 0, y: 200,width:500,height:500};
+		floors.push(testfloor);
 		
             stage = new PIXI.Container();
             renderer = PIXI.autoDetectRenderer(
@@ -42,15 +53,51 @@
 
             	requestAnimationFrame(update);
          }	
+
+
+	function checkCollision(xloc, yloc,currentfloorlist){
+
+		for(var f=0;f<currentfloorlist.length;f++){
+			var currentfloor = currentfloorlist[f];
+			var basex = currentfloor.x;
+			var basey = currentfloor.y;
+			var width  = currentfloor.width;
+			var height = currentfloor.height;
+			if(xloc>=basex && xloc<=basex+width && yloc>=basey && yloc<=basey+height){
+				return true;
+			}			
+		}
+
+		return false;
+	}
+		
+
+
 	 function physicsUpdate(){
 		for(var e = 0; e<entities.length; e++){
 			entity = entities[e];
 
 			//physics
+			//gravity
+			if(entity.yvel<=51){
+				entity.yvel+=0.98;
+			}
 
 			
+			//collision
+			var floorlist = world.floorlist;
+			if(checkCollision(entity.x+entity.xvel,entity.y+entity.yvel,floorlist)){
+				entity.xvel = 0;
+				entity.yvel = 0;
+			}else{
+				entity.x += entity.xvel;
+				entity.y += entity.yvel;
+				
+			}
+
+			//
+			
 			if(entity.entitytype == "player"){
-				//console.log("Player");
 				playersprite.position.x = entity.x;
 				playersprite.position.y = entity.y;
 			}
@@ -65,7 +112,7 @@
 
 
 	
-	   console.log(playersprite.x);
+	   
 				
 			//RENDER
             renderer.render(stage);
