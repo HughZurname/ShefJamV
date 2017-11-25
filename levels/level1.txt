@@ -1,4 +1,4 @@
-0 4 solid assets/images/environment/panel-0.png
+#Floor
 0 0 solid assets/images/environment/panel-0.png
 1 0 solid assets/images/environment/panel-1.png
 2 0 solid assets/images/environment/panel-2.png
@@ -8,7 +8,9 @@
 6 0 solid assets/images/environment/panel-0.png
 7 0 solid assets/images/environment/panel-1.png
 8 0 solid assets/images/environment/panel-2.png
+#Right Wall
 0 1 solid assets/images/environment/panel-1.png
 0 2 solid assets/images/environment/panel-1.png
 0 3 solid assets/images/environment/panel-1.png
+#Exit
 8 1 exit levels/level2.txt 1 1
