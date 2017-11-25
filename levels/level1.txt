@@ -1,17 +1,17 @@
 #Floor
-0 0 solid assets/images/environment/panel-0.png
-1 0 solid assets/images/environment/panel-1.png
-2 0 solid assets/images/environment/panel-2.png
-3 0 solid assets/images/environment/panel-0.png
-4 0 solid assets/images/environment/panel-1.png
-5 0 solid assets/images/environment/panel-2.png
-6 0 solid assets/images/environment/panel-0.png 0 0 30 30
-6 0 solid assets/images/environment/panel-0.png 35 35 30 30
-7 0 solid assets/images/environment/panel-1.png
-8 0 solid assets/images/environment/panel-2.png
+0 0 solid assets/images/environment/panel-L-small.png
+1 0 solid assets/images/environment/panel-M-large.png
+2 0 solid assets/images/environment/panel-M-large.png
+3 0 solid assets/images/environment/panel-M-large.png
+4 0 solid assets/images/environment/panel-M-open.png
+5 0 solid assets/images/environment/panel-M-large.png
+6 0 solid assets/images/environment/panel-M-large.png
+7 0 solid assets/images/environment/panel-M-large.png
+8 0 solid assets/images/environment/panel-R-wires.png
 #Right Wall
-0 1 solid assets/images/environment/panel-1.png
-0 2 solid assets/images/environment/panel-1.png
-0 3 solid assets/images/environment/panel-1.png
+0 1 solid assets/images/environment/panel-MU-large.png
+0 2 solid assets/images/environment/panel-MU-large.png
+0 3 solid assets/images/environment/panel-MU-large.png
 #Exit
-8 1 exit levels/level2.txt 1 1
+9 1 exit levels/level2.txt 1 1
+9 2 exit levels/level2.txt 1 1
