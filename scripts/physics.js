@@ -5,6 +5,9 @@ function rawCollide(xloc, yloc,ewidth,eheight,basex,basey,width,height){
 		}		
 		return false;
 	}
+function intersectingEntity(entity1,entity2){
+		return rawCollide(entity1.x,entity1.y,entity1.width,entity1.height,entity2.x,entity2.y,entity2.width,entity2.height);
+	}
 function whatCollided(xloc, yloc,ewidth,eheight,currentfloorlist){
 
 		for(let f=0;f<currentfloorlist.length;f++){
