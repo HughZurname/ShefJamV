@@ -1,3 +1,4 @@
+0 4 solid assets/images/environment/panel-0.png
 0 0 solid assets/images/environment/panel-0.png
 1 0 solid assets/images/environment/panel-1.png
 2 0 solid assets/images/environment/panel-2.png
