@@ -1,4 +1,10 @@
-
+function rawCollide(xloc, yloc,ewidth,eheight,basex,basey,width,height){
+		if((xloc>=basex || xloc+ewidth>=basex)  && (xloc<=basex+width || xloc+ewidth<=basex+width)
+			&& (yloc>=basey || yloc+eheight>=basey) && (yloc<=basey+height||yloc+eheight<=basey+height)){
+				return true;
+		}		
+		return false;
+	}
 function whatCollided(xloc, yloc,ewidth,eheight,currentfloorlist){
 
 		for(let f=0;f<currentfloorlist.length;f++){

@@ -8,11 +8,11 @@ const velGen = n => (Math.sin(n)-1)
 		size: Math.random() * 2
 	});	
 
-function loadWorld() {
-	
+function loadWorld(spawnx,spawny,filename) {
+	console.log("Loaded map: "+filename);
 	player = {
-		x: 50,
-		y: 50,
+		x: spawnx,
+		y: spawny,
 		xvel: 0,
 		yvel: 0,
 		width: 32,
@@ -20,7 +20,7 @@ function loadWorld() {
 		entitytype: "player"
 	};
 	entities.push(player);
-	loadFromFile(world, "levels/level1.txt");
+	loadFromFile(world,filename,true);
 
 	//defaultWorld();
 }
@@ -66,5 +66,14 @@ function defaultWorld() {
 
 
 function worldUpdates() {
-
+	for(let m = 0; m<world.interacts.length;m++){
+		let interactable = world.interacts[m];
+		if(rawCollide(player.x,player.y,player.width,player.height,interactable.x,interactable.y,interactable.width,interactable.height)){
+			if(interactable.type == "exit"){
+				loadFromFile(world,interactable.level,false);
+				player.x = interactable.spawnx;
+				player.y = interactable.spawny;
+			}
+		}
+	}
 }

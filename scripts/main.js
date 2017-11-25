@@ -3,9 +3,11 @@
 		let keylist = new Array();
 		let entities = new Array();
 		let floors = new Array();
+		let inters = new Array();
 		let world = {
 		    entitylist: entities,
-		    floorlist: floors
+		    floorlist: floors,
+		    interacts: inters
 		};
 		let player = {};
 		let drawnstars = new Array(1000);
@@ -43,7 +45,7 @@
 		   	drawnstars[i].position.y = Math.random()*512;
 		    	stage.addChild(drawnstars[i]);
 		    }
-		    loadWorld();
+		    loadWorld(50,50, "levels/level1.txt");
 		   
 		}
 
