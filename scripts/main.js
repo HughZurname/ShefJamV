@@ -28,13 +28,25 @@
 		    playersprite.position.y = 0;
 		    stage.addChild(playersprite);
 		//HUD
+			HUDcontainer = new PIXI.Container();
 			for(let h = 0; h<5; h++){
 			    let hearts = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");
 			    heartsprites[h] = new PIXI.Sprite(hearts);
 			    heartsprites[h].position.x = 40*h;
 			    heartsprites[h].position.y = 15;
-			    stage.addChild(heartsprites[h]);
+			    HUDcontainer.addChild(heartsprites[h]);
 			}
+	
+			let loadingte = PIXI.Texture.fromImage("assets/images/environment/space.png"); 
+			loadspri = new PIXI.Sprite(loadingte);
+			loadspri.position.x = 0;
+			loadspri.position.y = 0;
+			loadspri.width = 1024;
+			loadspri.height = 512;
+			loadspri.alpha = 0;
+			HUDcontainer.addChild(loadspri);
+
+			stage.addChild(HUDcontainer);
 
 		    requestAnimationFrame(update);
 		}
@@ -47,14 +59,16 @@
 					view: document.getElementById("game-canvas")
 				}
 			);
+			starcontainer = new PIXI.ParticleContainer();
 			for (i = 0; i < 100; i++) {
 				let startex = PIXI.Texture.fromImage("assets/images/environment/star-0.png");
 				drawnstars[i] = new PIXI.Sprite(startex);
 				drawnstars[i].position.x = Math.random() * 1024;
 				drawnstars[i].position.y = Math.random() * 512;
-				stage.addChild(drawnstars[i]);
+				starcontainer.addChild(drawnstars[i]);
 			}
-			loadWorld(50, 50, "levels/level1.txt");
+			stage.addChild(starcontainer);
+			loadWorld(80, 300, "levels/level1.txt");
 		}
 
 		function update() {

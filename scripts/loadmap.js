@@ -99,7 +99,7 @@ function loadLevel(fileitem,continueornot){
 		console.log("continuing load");
 		continueLoad();
 	}
-
+	loadspri.alpha = 0;
 }
 function loadFromFile(world, levelname,continueornot){
 	console.log(continueornot);
