@@ -14,15 +14,27 @@
 		//event listener
 		window.addEventListener("keydown", keypress, false);
 		window.addEventListener("keyup", keyup, false);
-
+		let health = 100;
+		let heartsprites = {};
 		function continueLoad() {
 			let floortextures = {};
+					
 
+
+			
 		    let playertexture = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");
 		    playersprite = new PIXI.Sprite(playertexture);
 		    playersprite.position.x = 0;
 		    playersprite.position.y = 0;
 		    stage.addChild(playersprite);
+		//HUD
+			for(let h = 0; h<5; h++){
+			    let hearts = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");
+			    heartsprites[h] = new PIXI.Sprite(hearts);
+			    heartsprites[h].position.x = 40*h;
+			    heartsprites[h].position.y = 15;
+			    stage.addChild(heartsprites[h]);
+			}
 
 		    requestAnimationFrame(update);
 		}
@@ -58,7 +70,7 @@
 			//RENDER
 			//console.log("rendering");
 			render();
-
+			
 
 
 			renderer.render(stage);
