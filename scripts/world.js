@@ -77,6 +77,7 @@ function worldUpdates() {
 		let interactable = world.interacts[m];
 		if(rawCollide(player.x,player.y,player.width,player.height,interactable.x,interactable.y,interactable.width,interactable.height)){
 			if(interactable.type == "exit"){
+				loadspri.alpha = 1;
 				loadFromFile(world,interactable.level,false);
 				player.x = interactable.spawnx;
 				player.y = interactable.spawny;

@@ -1,6 +1,15 @@
 function render(){
-	stage.pivot.x = player.x+player.width/2-512;
-	stage.pivot.y = player.y+player.height/2-400;
+	var offsetx = player.x+player.width/2-512;
+	var offsety = player.y+player.height/2-400;
+	stage.pivot.x = offsetx;
+	stage.pivot.y = offsety;
+	HUDcontainer.pivot.x = -offsetx;
+	HUDcontainer.pivot.y = -offsety;
+	starcontainer.pivot.x = -offsetx;
+	starcontainer.pivot.y = -offsety;
+
+
+
 	for(var s = 0; s<stars.length; s++){
 		stars[s].x +=stars[s].xvel;
 		stars[s].y +=stars[s].yvel;
