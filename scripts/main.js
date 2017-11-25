@@ -60,7 +60,6 @@
 
 
 		function update() {
-
 		    //input
 		    keycheck();
 		    //world update
@@ -70,8 +69,6 @@
 			playersprite.alpha = 1-((justdamaged%10)/10);
 		    //physics
 		    physicsUpdate();
-
-
 			//RENDER
 			//console.log("rendering");
 			render();
