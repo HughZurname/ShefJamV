@@ -43,9 +43,7 @@
 		    	stage.addChild(drawnstars[i]);
 		    }
 		    loadWorld(50,50, "levels/level1.txt");
-		   
 		}
-
 
 		function update() {
 
