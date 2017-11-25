@@ -9,4 +9,11 @@ function render(){
 		drawnstars[s].position.x = stars[s].x;
 		drawnstars[s].position.y = stars[s].y;
 	}
+	for(let e = 0; e<world.entitylist.length; e++){
+		let ce = world.entitylist[e];
+		if(typeof ce.sprite !== 'undefined'){
+			ce.sprite.position.x = ce.x;
+			ce.sprite.position.y = ce.y;
+		}
+	}
 }
