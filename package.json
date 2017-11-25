@@ -4,6 +4,7 @@
   "description": "ShefJamV game project",
   "main": "index.js",
   "scripts": {
+    "dev": "http-server",
     "test": "test"
   },
   "repository": {
