@@ -63,8 +63,6 @@ function defaultWorld() {
 
 }
 
-
-
 function worldUpdates() {
 	for(let m = 0; m<world.interacts.length;m++){
 		let interactable = world.interacts[m];
