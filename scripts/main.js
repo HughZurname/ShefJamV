@@ -24,9 +24,6 @@
 		    playersprite.position.y = 0;
 		    stage.addChild(playersprite);
 
-		    	
-  		
-		    
 		    requestAnimationFrame(update);
 		}
 		//initalisation
