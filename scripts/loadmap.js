@@ -40,7 +40,20 @@ function loadLevel(fileitem,continueornot){
 			let type = components[2];
 			let text = components[3];
 			if(type=="solid"){
-				let currentfloor = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,texture:text};
+				let sx = 0;
+				let sy = 0;
+				let w = 64;
+				let h = 64;
+				if(components.length>=5){
+					sx = components[4];
+					sy = components[5];
+					w = components[6];
+					h = components[7];	
+				}
+				let finalX = ((64*xcoordGrid)+parseInt(sx));
+				let finalY = ((64*ycoordGrid)+parseInt(sy));
+				console.log(finalX+" "+finalY);
+				let currentfloor = {x: finalX, y: finalY,width:w,height:h,texture:text};
 				world.floorlist.push(currentfloor);
 			}
 			if(type=="exit"){
@@ -76,6 +89,8 @@ function loadLevel(fileitem,continueornot){
 		        panelsprite = new PIXI.Sprite(panel);
 		        panelsprite.position.x = cfloor.x;
 		        panelsprite.position.y = cfloor.y;
+			panelsprite.width = cfloor.width;
+			panelsprite.height = cfloor.height;
 		        floorcontainer.addChild(panelsprite);
 	}
 	stage.addChild(floorcontainer);
