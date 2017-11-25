@@ -13,48 +13,62 @@
       </div>
       <script src="pixi.js"></script>
       <script>
+	var keylist = new Array();
 	var entities = new Array();
 	var floors = new Array();
 	var world = {entitylist:entities,floorlist:floors};	
         var player = {};
 	function onTheGround(xloc, yloc){	
-                console.log(xloc+","+yloc+" floors:"+world.floorlist);
+              //  console.log(xloc+","+yloc+" floors:"+world.floorlist);
 		var toreturn = checkCollision(xloc,yloc,1,1,world.floorlist);
-		console.log(toreturn);
+	//	console.log(toreturn);
 
 		return toreturn;
 	}
 	function jump(){
 		if(onTheGround(player.x,player.y+player.height+1)){
-			console.log("jump");
-			player.yvel-=10;
+			//console.log("jump");
+			player.yvel-=20 	;
 		}
 	}
-	var speed = 0.5;
+	var speed = 5;
 	function move(side){
-		if(Math.abs(playerxvel)<=5){
-			player.xvel += side*speed;
+		if(Math.abs(player.xvel)<=5){
+			player.xvel = side*speed;
 		}
 	}
-	window.addEventListener("keypress",keypress,false);
+	window.addEventListener("keydown",keypress,false);
+	window.addEventListener("keyup",keyup,false);	
 
 	function keypress(evt){
 		var keyCode = evt.which;
-		console.log(keyCode);
-		if(keyCode == 119){
+		
+		keylist.push(keyCode);
+		console.log("Pressed "+keyCode);
+		
+	}
+	function keyup(evt){
+		var keyCode = evt.which;
+		console.log("Released "+keyCode);
+		while(keylist.indexOf(keyCode) > -1){
+			keylist.splice(keylist.indexOf(keyCode),1);
+		}
+		
+	}
+	function keycheck(){
+
+		if(keylist.includes(87)){
 			jump();
 		}	
-		if(keyCode == 97){
-			console.log("left");
+		if(keylist.includes(65)){
+			//console.log("left");
 			move(-1);
 		}
-		if(keyCode == 100){
-			console.log("right");
+		if(keylist.includes(68)){
+			//console.log("right");
 			move(1);
-		}	
-	}
-
-
+		}		
+	}		
          function init() {
 		player = {x: 50, y: 50,xvel:0,yvel:0,width:32,height:32,entitytype:"player"};
 		entities.push(player);
@@ -66,6 +80,8 @@
 			testfloor = {x: 128+192*i, y: 200,width:64,height:64,texture:"panel-3"};
 			floors.push(testfloor);
 		}
+		var testfloor = {x: 192, y: 136,width:64,height:64,texture:"panel-1"};
+		floors.push(testfloor);
             stage = new PIXI.Container();
             renderer = PIXI.autoDetectRenderer(
 			   1024,
@@ -98,7 +114,20 @@
             	requestAnimationFrame(update);
          }	
 
+	function whatCollided(xloc, yloc,ewidth,eheight,currentfloorlist){
 
+		for(var f=0;f<currentfloorlist.length;f++){
+			var currentfloor = currentfloorlist[f];
+			var basex = currentfloor.x;
+			var basey = currentfloor.y;
+			var width  = currentfloor.width;
+			var height = currentfloor.height;
+			if((xloc>=basex || xloc+ewidth>=basex)  && (xloc<=basex+width || xloc+ewidth<=basex+width)
+				&& (yloc>=basey || yloc+eheight>=basey) && (yloc<=basey+height||yloc+eheight<=basey+height)){
+				return currentfloor;
+			}		
+		}
+	}	
 	function checkCollision(xloc, yloc,ewidth,eheight,currentfloorlist){
 
 		for(var f=0;f<currentfloorlist.length;f++){
@@ -128,14 +157,23 @@
 				entity.yvel+=0.98;
 			}
 			//friction
-			entity.xvel*=0.95;
+			entity.xvel*=0.98;
 			
 			//collision
 			var floorlist = world.floorlist;
 			if(checkCollision(entity.x+entity.xvel,entity.y+entity.yvel,entity.width,entity.height,floorlist)){
-				entity.yvel = 0;				
+							
 				if(checkCollision(entity.x+entity.xvel,entity.y,entity.width,entity.height,floorlist)){
 					entity.xvel = 0;
+					console.log(player.xvel);
+					if(checkCollision(entity.x,entity.y+entity.yvel,entity.width,entity.height,floorlist)){	
+						var belowfloor = whatCollided(entity.x,entity.y+entity.yvel,entity.width,entity.height,floorlist);
+						entity.y = belowfloor.y-entity.height;	
+						console.log("set y"+y);
+						entity.yvel = 0;				
+					}else{
+						entity.y += entity.yvel;
+					}
 				}else{	
 					entity.x += entity.xvel;
 				}	
@@ -157,6 +195,7 @@
 
 	 }
          function update() {
+		keycheck();
 	    physicsUpdate();
 
 
