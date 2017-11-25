@@ -26,13 +26,13 @@
 
 
 		    let floortextures = {};
-		    let spacetexture = PIXI.Texture.fromImage("assets/images/space.png");
+		    let spacetexture = PIXI.Texture.fromImage("assets/images/environment/space.png");
 		    space = new PIXI.Sprite(spacetexture);
 		    space.position.x = 0;
 		    space.position.y = 0;
 		    stage.addChild(space);
 
-		    let playertexture = PIXI.Texture.fromImage("assets/images/shittybox.png");
+		    let playertexture = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");
 		    playersprite = new PIXI.Sprite(playertexture);
 		    playersprite.position.x = 0;
 		    playersprite.position.y = 0;
@@ -40,7 +40,7 @@
 
 		    for (i = 0; i < floors.length; i++) {
 		        let cfloor = floors[i];
-		        let panel = PIXI.Texture.fromImage("assets/images/" + cfloor.texture + ".png");
+		        let panel = PIXI.Texture.fromImage("assets/images/environment/" + cfloor.texture + ".png");
 		        panelsprite = new PIXI.Sprite(panel);
 		        panelsprite.position.x = cfloor.x;
 		        panelsprite.position.y = cfloor.y;
@@ -63,6 +63,7 @@
 
 
 		    //RENDER
+			//console.log("rendering");
 		    renderer.render(stage);
 		    requestAnimationFrame(update);
 		}
