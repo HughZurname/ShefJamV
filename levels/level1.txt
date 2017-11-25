@@ -5,7 +5,8 @@
 3 0 solid assets/images/environment/panel-0.png
 4 0 solid assets/images/environment/panel-1.png
 5 0 solid assets/images/environment/panel-2.png
-6 0 solid assets/images/environment/panel-0.png
+6 0 solid assets/images/environment/panel-0.png 0 0 30 30
+6 0 solid assets/images/environment/panel-0.png 35 35 30 30
 7 0 solid assets/images/environment/panel-1.png
 8 0 solid assets/images/environment/panel-2.png
 #Right Wall
