@@ -28,7 +28,7 @@
 	function jump(){
 		if(onTheGround(player.x,player.y+player.height+1)){
 			//console.log("jump");
-			player.yvel-=20 	;
+			player.yvel=-15 	;
 		}
 	}
 	var speed = 5;
@@ -44,12 +44,10 @@
 		var keyCode = evt.which;
 		
 		keylist.push(keyCode);
-		console.log("Pressed "+keyCode);
 		
 	}
 	function keyup(evt){
 		var keyCode = evt.which;
-		console.log("Released "+keyCode);
 		while(keylist.indexOf(keyCode) > -1){
 			keylist.splice(keylist.indexOf(keyCode),1);
 		}
@@ -153,11 +151,11 @@
 
 			//physics
 			//gravity
-			if(entity.yvel<=51){
+			if(entity.yvel<=10){
 				entity.yvel+=0.98;
 			}
 			//friction
-			entity.xvel*=0.98;
+			entity.xvel*=0.9;
 			
 			//collision
 			var floorlist = world.floorlist;
@@ -165,16 +163,14 @@
 							
 				if(checkCollision(entity.x+entity.xvel,entity.y,entity.width,entity.height,floorlist)){
 					entity.xvel = 0;
-					console.log(player.xvel);
-					if(checkCollision(entity.x,entity.y+entity.yvel,entity.width,entity.height,floorlist)){	
-						var belowfloor = whatCollided(entity.x,entity.y+entity.yvel,entity.width,entity.height,floorlist);
-						entity.y = belowfloor.y-entity.height;	
-						console.log("set y"+y);
-						entity.yvel = 0;				
+					//console.log(player.xvel);
+					if(checkCollision(entity.x,entity.y+entity.yvel,entity.width,entity.height,floorlist)){
+						entity.yvel = 0;
 					}else{
 						entity.y += entity.yvel;
 					}
 				}else{	
+					entity.yvel = 0;
 					entity.x += entity.xvel;
 				}	
 			}else{
