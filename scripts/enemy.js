@@ -1,4 +1,4 @@
-function enemyBehavior(enemy){
+function entityBehavior(entity){
 //what enemies do
 
 
