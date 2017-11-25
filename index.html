@@ -13,29 +13,65 @@
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.0.0/pixi.min.js"></script>
       <script>
+	var entities = new Array();
+	var world = {entitylist:entities};
+
+
+
          function init() {
+		var player = {x: 50, y: 50,entitytype:"player"};
+		entities.push(player);
+		
             stage = new PIXI.Container();
             renderer = PIXI.autoDetectRenderer(
 			   1024,
                512,
                {view: document.getElementById("game-canvas")}
             );
-			var spacetexture = PIXI.Texture.fromImage("resources/space.png");
-			space = new PIXI.Sprite(spacetexture);
-			space.position.x = 0;
-			space.position.y = 0;
-            stage.addChild(space);
-		
-            requestAnimationFrame(update);
-         }
+		var spacetexture = PIXI.Texture.fromImage("resources/space.png");
+		space = new PIXI.Sprite(spacetexture);
+		space.position.x = 0;
+		space.position.y = 0;
+            	stage.addChild(space);
 
+		var playertexture = PIXI.Texture.fromImage("resources/playersprite.png");
+		playersprite = new PIXI.Sprite(playertexture);
+		playersprite.position.x = 0;
+		playersprite.position.y = 0;
+            	stage.addChild(playersprite);
+
+            	requestAnimationFrame(update);
+         }	
+	 function physicsUpdate(){
+		for(var e = 0; e<entities.length; e++){
+			entity = entities[e];
+
+			//physics
+
+			
+			if(entity.entitytype == "player"){
+				console.log("Player");
+				playersprite.position.x = entity.x;
+				playersprite.position.x = entity.x;
+			}
+			//console.log(entity.x+","+entity.y);
+
+			
+		} 
+
+	 }
          function update() {
-			
-			
+	    physicsUpdate();
+
+
+
+	
+				
 			//RENDER
             renderer.render(stage);
             requestAnimationFrame(update);
          }
+
       </script>
    </body>
 </html>
