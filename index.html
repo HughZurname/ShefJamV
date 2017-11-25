@@ -1,31 +1,41 @@
-<!doctype html>
 <html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Powerless</title>
+      <style>
+         body { background-color: #000000; }
+         canvas { background-color: #222222; }
+      </style>
+   </head>
+   <body onload="init();">
+      <div align="center">
+         <canvas id="game-canvas" width="1024" height="512"></canvas>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.0.0/pixi.min.js"></script>
+      <script>
+         function init() {
+            stage = new PIXI.Container();
+            renderer = PIXI.autoDetectRenderer(
+			   1024,
+               512,
+               {view: document.getElementById("game-canvas")}
+            );
+			var spacetexture = PIXI.Texture.fromImage("resources/space.png");
+			space = new PIXI.Sprite(spacetexture);
+			space.position.x = 0;
+			space.position.y = 0;
+            stage.addChild(space);
+		
+            requestAnimationFrame(update);
+         }
 
-<head>
-    <meta charset="utf-8">
-    <title>Hello World</title>
-</head>
-<script src="pixi.js"></script>
-
-<body>
-    <script type="text/javascript">
-        let type = "WebGL"
-        if (!PIXI.utils.isWebGLSupported()) {
-            type = "canvas"
-        }
-        //Create the renderer
-        let renderer = PIXI.autoDetectRenderer(256, 256);
-
-        //Add the canvas to the HTML document
-        document.body.appendChild(renderer.view);
-
-        //Create a container object called the `stage`
-        let stage = new PIXI.Container();
-
-        //Tell the `renderer` to `render` the `stage`
-        renderer.render(stage);
-        PIXI.utils.sayHello(type)
-    </script>
-</body>
-
+         function update() {
+			
+			
+			//RENDER
+            renderer.render(stage);
+            requestAnimationFrame(update);
+         }
+      </script>
+   </body>
 </html>
