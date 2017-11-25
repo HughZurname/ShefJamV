@@ -1,10 +1,15 @@
+const velGen = n => (Math.sin(n)-1)
+
+	const stars = Array(100).fill().map(e => e = {
+		x:Math.random()*1024,
+		y:Math.random()*512,
+		xvel: velGen(Math.random() * 2),
+		yvel: velGen(Math.random() * 2),
+		size: Math.random() * 2
+	});	
+
 function loadWorld() {
-	loadFromFile(world, "levels/level1.txt");
-
-	defaultWorld();
-}
-
-function defaultWorld() {
+	
 	player = {
 		x: 50,
 		y: 50,
@@ -15,6 +20,12 @@ function defaultWorld() {
 		entitytype: "player"
 	};
 	entities.push(player);
+	loadFromFile(world, "levels/level1.txt");
+
+	//defaultWorld();
+}
+
+function defaultWorld() {
 	for (i = 0; i < 5; i++) {
 		var testfloor = {
 			x: 0 + 192 * i,
@@ -52,13 +63,7 @@ function defaultWorld() {
 
 }
 
-const velGen = n => Math.sinh(n)
 
-const stars = Array(1000).fill().map(e => e = {
-	xvel: velGen(Math.random() * 10),
-	yvel: velGen(Math.random() * 10),
-	size: Math.random() * 2
-});
 
 function worldUpdates() {
 

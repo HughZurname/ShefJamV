@@ -39,6 +39,7 @@ function whatCollided(xloc, yloc,ewidth,eheight,currentfloorlist){
 			//physics
 			//gravity
 			if(entity.yvel<=10){
+				//console.log("Applying gravity: "+entity.y);
 				entity.yvel+=0.98;
 			}
 			//friction
