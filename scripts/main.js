@@ -1,5 +1,5 @@
 		//initialisation
-
+		let justdamaged = 0;
 		let keylist = new Array();
 		let entities = new Array();
 		let floors = new Array();
@@ -61,6 +61,17 @@
 
 		function update() {
 
+<<<<<<< HEAD
+		    //input
+		    keycheck();
+		    //world update
+		    worldUpdates();
+		    //logic
+			if(justdamaged>0){justdamaged-=1;}
+			playersprite.alpha = 1-((justdamaged%10)/10);
+		    //physics
+		    physicsUpdate();
+=======
 			//input
 			keycheck();
 			//world update
@@ -68,6 +79,7 @@
 
 			//physics
 			physicsUpdate();
+>>>>>>> b5e8f98c05fc4a20c65228c76bca0b3cce4a4765
 
 
 			//RENDER

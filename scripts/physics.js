@@ -18,8 +18,15 @@ function whatCollided(xloc, yloc,ewidth,eheight,currentfloorlist){
 			return currentfloor;
 		}		
 	}
+<<<<<<< HEAD
+function intersectingEntity(entity1,entity2){
+		return rawCollide(entity1.x,entity1.y,entity1.width,entity1.height,entity2.x,entity2.y,entity2.width,entity2.height);
+	}
+function whatCollided(xloc, yloc,ewidth,eheight,currentfloorlist){
+=======
 }	
 function checkCollision(xloc, yloc,ewidth,eheight,currentfloorlist){
+>>>>>>> b5e8f98c05fc4a20c65228c76bca0b3cce4a4765
 
 	for(let f=0;f<currentfloorlist.length;f++){
 		let currentfloor = currentfloorlist[f];
