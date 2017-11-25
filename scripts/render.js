@@ -1,4 +1,6 @@
 function render(){
+	stage.pivot.x = player.x+player.width/2-512;
+	stage.pivot.y = player.y+player.height/2-400;
 	for(var s = 0; s<stars.length; s++){
 		stars[s].x +=stars[s].xvel;
 		stars[s].y +=stars[s].yvel;
