@@ -38,6 +38,14 @@
 		    playersprite.position.y = 0;
 		    stage.addChild(playersprite);
 
+		    	
+  		    for (i = 0; i < 1000; i++) {
+		        let startex = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");  
+			star = new PIXI.Sprite(startex);	   	 
+			star.position.x = Math.random()*1024;
+		   	 star.position.y = Math.random()*512;
+		    	  	stage.addChild(star);
+		    }
 		    for (i = 0; i < floors.length; i++) {
 		        let cfloor = floors[i];
 		        let panel = PIXI.Texture.fromImage("assets/images/environment/" + cfloor.texture + ".png");
@@ -45,7 +53,6 @@
 		        panelsprite.position.x = cfloor.x;
 		        panelsprite.position.y = cfloor.y;
 		        stage.addChild(panelsprite);
-
 		    }
 		    requestAnimationFrame(update);
 		}
@@ -64,6 +71,10 @@
 
 		    //RENDER
 			//console.log("rendering");
+			render();
+
+
+
 		    renderer.render(stage);
 		    requestAnimationFrame(update);
 		}
