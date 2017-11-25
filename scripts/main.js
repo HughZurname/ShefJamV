@@ -41,10 +41,10 @@
 		    	
   		    for (i = 0; i < 1000; i++) {
 		        let startex = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");  
-			star = new PIXI.Sprite(startex);	   	 
-			star.position.x = Math.random()*1024;
-		   	 star.position.y = Math.random()*512;
-		    	  	stage.addChild(star);
+			drawnstar = new PIXI.Sprite(startex);	   	 
+			drawnstar.position.x = Math.random()*1024;
+		   	drawnstar.position.y = Math.random()*512;
+		    	stage.addChild(drawnstar);
 		    }
 		    for (i = 0; i < floors.length; i++) {
 		        let cfloor = floors[i];
