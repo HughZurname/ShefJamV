@@ -1,0 +1,25 @@
+{
+  "name": "shefjamv",
+  "version": "1.0.0",
+  "description": "ShefJamV game project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HughZurname/ShefJamV.git"
+  },
+  "keywords": [
+    "GameJam",
+    "pixijs",
+    "javascript",
+    "game"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HughZurname/ShefJamV/issues"
+  },
+  "homepage": "https://github.com/HughZurname/ShefJamV#readme"
+}
