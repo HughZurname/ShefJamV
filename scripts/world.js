@@ -68,7 +68,7 @@ function calculateDistance(playerX,playerY,entityX,entityY)
 	var horizontalDis = playerX - entityX;
 	var verticalDis = playerY - entityY;
 
-	var realDistance = Math.sqrt(horizontalDis + verticalDis);
+	var realDistance = Math.sqrt(Math.Pow(horizontalDis, 2) + Math.Pow(verticalDis,2));
 	return realDistance;
 }
 
