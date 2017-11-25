@@ -1,13 +1,13 @@
 		//initialisation
-
+		let justdamaged = 0;
 		let keylist = new Array();
 		let entities = new Array();
 		let floors = new Array();
 		let inters = new Array();
 		let world = {
-		    entitylist: entities,
-		    floorlist: floors,
-		    interacts: inters
+			entitylist: entities,
+			floorlist: floors,
+			interacts: inters
 		};
 		let player = {};
 		let drawnstars = new Array(1000);
@@ -15,8 +15,8 @@
 		window.addEventListener("keydown", keypress, false);
 		window.addEventListener("keyup", keyup, false);
 
-		function continueLoad(){
-		    let floortextures = {};
+		function continueLoad() {
+			let floortextures = {};
 
 		    let playertexture = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");
 		    playersprite = new PIXI.Sprite(playertexture);
@@ -28,40 +28,39 @@
 		}
 		//initalisation
 		function init() {
-		    stage = new PIXI.Container();
-		    renderer = PIXI.autoDetectRenderer(
-		        1024,
-		        512, {
-		            view: document.getElementById("game-canvas")
-		        }
-		    );
-    		    for (i = 0; i < 100; i++) {
-		        let startex = PIXI.Texture.fromImage("assets/images/environment/star-0.png");  
-			drawnstars[i] = new PIXI.Sprite(startex);	   	 
-			drawnstars[i].position.x = Math.random()*1024;
-		   	drawnstars[i].position.y = Math.random()*512;
-		    	stage.addChild(drawnstars[i]);
-		    }
-		    loadWorld(50,50, "levels/level1.txt");
+			stage = new PIXI.Container();
+			renderer = PIXI.autoDetectRenderer(
+				1024,
+				512, {
+					view: document.getElementById("game-canvas")
+				}
+			);
+			for (i = 0; i < 100; i++) {
+				let startex = PIXI.Texture.fromImage("assets/images/environment/star-0.png");
+				drawnstars[i] = new PIXI.Sprite(startex);
+				drawnstars[i].position.x = Math.random() * 1024;
+				drawnstars[i].position.y = Math.random() * 512;
+				stage.addChild(drawnstars[i]);
+			}
+			loadWorld(50, 50, "levels/level1.txt");
 		}
 
 		function update() {
-
 		    //input
 		    keycheck();
 		    //world update
 		    worldUpdates();
-
+		    //logic
+			if(justdamaged>0){justdamaged-=1;}
+			playersprite.alpha = 1-((justdamaged%10)/10);
 		    //physics
 		    physicsUpdate();
-
-
-		    //RENDER
+			//RENDER
 			//console.log("rendering");
 			render();
 
 
 
-		    renderer.render(stage);
-		    requestAnimationFrame(update);
+			renderer.render(stage);
+			requestAnimationFrame(update);
 		}

@@ -93,7 +93,7 @@ function worldUpdates() {
 			var distanceFrom = calculateDistance(player.x, player.y, entity.x, entity.y);
 			// console.log("Distance from bug = " + distanceFrom);
 			if (distanceFrom < 150){
-				console.log("Sound of bug plays!");
+				//console.log("Sound of bug plays!");
 			}
 		}
 		
