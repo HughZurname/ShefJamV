@@ -21,7 +21,6 @@ function loadWorld(spawnx,spawny,filename) {
 	};
 	entities.push(player);
 	loadFromFile(world,filename,true);
-
 	//defaultWorld();
 }
 
