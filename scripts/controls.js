@@ -35,14 +35,18 @@ function onTheGround(xloc, yloc){
 		return toreturn;
 	}
 	function jump(){
+		if(justdamaged==0){
 		if(onTheGround(player.x,player.y+player.height+1)){
 			//console.log("jump");
 			player.yvel=-15 	;
 		}
+		}
 	}
 	var speed = 10;
 	function move(side){
+		if(justdamaged==0){
 		if(Math.abs(player.xvel)<=5){
 			player.xvel = side*speed;
+		}
 		}
 	}
