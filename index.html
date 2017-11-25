@@ -15,30 +15,65 @@
       <script>
 	var entities = new Array();
 	var floors = new Array();
-	var world = {entitylist:entities,floorlist:floors};
+	var world = {entitylist:entities,floorlist:floors};	
+        var player = {};
+	function onTheGround(xloc, yloc){	
+                console.log(xloc+","+yloc+" floors:"+world.floorlist);
+		var toreturn = checkCollision(xloc,yloc,1,1,world.floorlist);
+		console.log(toreturn);
 
+		return toreturn;
+	}
+	function jump(){
+		if(onTheGround(player.x,player.y+player.height+1)){
+			console.log("jump");
+			player.yvel-=10;
+		}
+	}
+	var speed = 0.5;
+	function move(side){
+		if(Math.abs(playerxvel)<=5){
+			player.xvel += side*speed;
+		}
+	}
+	window.addEventListener("keypress",keypress,false);
 
-	
-	window.addEventListener("keyPress",function (){
-		console.log(keypress);
-
-
-	});
+	function keypress(evt){
+		var keyCode = evt.which;
+		console.log(keyCode);
+		if(keyCode == 119){
+			jump();
+		}	
+		if(keyCode == 97){
+			console.log("left");
+			move(-1);
+		}
+		if(keyCode == 100){
+			console.log("right");
+			move(1);
+		}	
+	}
 
 
          function init() {
-		var player = {x: 50, y: 50,xvel:0,yvel:0,entitytype:"player"};
+		player = {x: 50, y: 50,xvel:0,yvel:0,width:32,height:32,entitytype:"player"};
 		entities.push(player);
-
-		var testfloor = {x: 0, y: 200,width:500,height:500};
-		floors.push(testfloor);
-		
+		for(i=0;i<5;i++){
+			var testfloor = {x: 0+192*i, y: 200,width:64,height:64,texture:"panel-1"};
+			floors.push(testfloor);
+			testfloor = {x: 64+192*i, y: 200,width:64,height:64,texture:"panel-2"};
+			floors.push(testfloor);
+			testfloor = {x: 128+192*i, y: 200,width:64,height:64,texture:"panel-3"};
+			floors.push(testfloor);
+		}
             stage = new PIXI.Container();
             renderer = PIXI.autoDetectRenderer(
 			   1024,
                512,
                {view: document.getElementById("game-canvas")}
             );
+
+		var floortextures = {};
 		var spacetexture = PIXI.Texture.fromImage("assets/images/space.png");
 		space = new PIXI.Sprite(spacetexture);
 		space.position.x = 0;
@@ -51,11 +86,20 @@
 		playersprite.position.y = 0;
             	stage.addChild(playersprite);
 
+		for(i=0; i<floors.length; i++){
+			var cfloor = floors[i];
+			var panel = PIXI.Texture.fromImage("assets/images/"+cfloor.texture+".png");
+			panelsprite = new PIXI.Sprite(panel);
+			panelsprite.position.x = cfloor.x;
+			panelsprite.position.y = cfloor.y;
+		    	stage.addChild(panelsprite);
+			
+		}
             	requestAnimationFrame(update);
          }	
 
 
-	function checkCollision(xloc, yloc,currentfloorlist){
+	function checkCollision(xloc, yloc,ewidth,eheight,currentfloorlist){
 
 		for(var f=0;f<currentfloorlist.length;f++){
 			var currentfloor = currentfloorlist[f];
@@ -63,9 +107,10 @@
 			var basey = currentfloor.y;
 			var width  = currentfloor.width;
 			var height = currentfloor.height;
-			if(xloc>=basex && xloc<=basex+width && yloc>=basey && yloc<=basey+height){
+			if((xloc>=basex || xloc+ewidth>=basex)  && (xloc<=basex+width || xloc+ewidth<=basex+width)
+				&& (yloc>=basey || yloc+eheight>=basey) && (yloc<=basey+height||yloc+eheight<=basey+height)){
 				return true;
-			}			
+			}		
 		}
 
 		return false;
@@ -82,13 +127,18 @@
 			if(entity.yvel<=51){
 				entity.yvel+=0.98;
 			}
-
+			//friction
+			entity.xvel*=0.95;
 			
 			//collision
 			var floorlist = world.floorlist;
-			if(checkCollision(entity.x+entity.xvel,entity.y+entity.yvel,floorlist)){
-				entity.xvel = 0;
-				entity.yvel = 0;
+			if(checkCollision(entity.x+entity.xvel,entity.y+entity.yvel,entity.width,entity.height,floorlist)){
+				entity.yvel = 0;				
+				if(checkCollision(entity.x+entity.xvel,entity.y,entity.width,entity.height,floorlist)){
+					entity.xvel = 0;
+				}else{	
+					entity.x += entity.xvel;
+				}	
 			}else{
 				entity.x += entity.xvel;
 				entity.y += entity.yvel;
