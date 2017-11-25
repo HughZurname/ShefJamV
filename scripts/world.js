@@ -68,7 +68,7 @@ function calculateDistance(playerX,playerY,entityX,entityY)
 	var horizontalDis = playerX - entityX;
 	var verticalDis = playerY - entityY;
 
-	var realDistance = Math.sqrt(Math.Pow(horizontalDis, 2) + Math.Pow(verticalDis,2));
+	var realDistance = Math.sqrt(Math.pow(horizontalDis, 2) + Math.pow(verticalDis,2));
 	return realDistance;
 }
 
@@ -85,10 +85,10 @@ function worldUpdates() {
 		}
 	}
 
-	for(let m = 0; m<world.entities.length;m++){
-		let entity = world.entities[m];
+	for(let m = 0; m<world.entitylist.length;m++){
+		let entity = world.entitylist[m];
 		if (entity.entitytype == "enemy"){
-			var distanceFrom = calculateDistance(playerX, playerY, entityX, entityY);
+			var distanceFrom = calculateDistance(player.x, player.y, entity.x, entity.y);
 			console.log("Distance from bug = " + distanceFrom);
 		}
 		
