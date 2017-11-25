@@ -28,13 +28,13 @@
                512,
                {view: document.getElementById("game-canvas")}
             );
-		var spacetexture = PIXI.Texture.fromImage("resources/space.png");
+		var spacetexture = PIXI.Texture.fromImage("assets/images/space.png");
 		space = new PIXI.Sprite(spacetexture);
 		space.position.x = 0;
 		space.position.y = 0;
             	stage.addChild(space);
 
-		var playertexture = PIXI.Texture.fromImage("resources/playersprite.png");
+		var playertexture = PIXI.Texture.fromImage("assets/images/shittybox.png");
 		playersprite = new PIXI.Sprite(playertexture);
 		playersprite.position.x = 0;
 		playersprite.position.y = 0;
@@ -50,11 +50,10 @@
 
 			
 			if(entity.entitytype == "player"){
-				console.log("Player");
+				//console.log("Player");
 				playersprite.position.x = entity.x;
-				playersprite.position.x = entity.x;
+				playersprite.position.y = entity.y;
 			}
-			//console.log(entity.x+","+entity.y);
 
 			
 		} 
@@ -66,6 +65,7 @@
 
 
 	
+	   console.log(playersprite.x);
 				
 			//RENDER
             renderer.render(stage);
