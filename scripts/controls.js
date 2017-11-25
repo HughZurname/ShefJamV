@@ -40,7 +40,7 @@ function onTheGround(xloc, yloc){
 			player.yvel=-15 	;
 		}
 	}
-	var speed = 5;
+	var speed = 10;
 	function move(side){
 		if(Math.abs(player.xvel)<=5){
 			player.xvel = side*speed;

@@ -49,7 +49,7 @@ function whatCollided(xloc, yloc,ewidth,eheight,currentfloorlist){
 				entity.yvel+=0.98;
 			}
 			//friction
-			entity.xvel*=0.9;
+			entity.xvel*=0.5;
 			
 			//collision
 			let floorlist = world.floorlist;
