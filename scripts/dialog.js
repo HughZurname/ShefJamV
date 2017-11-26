@@ -34,5 +34,5 @@ function printLines(textSpace = document.getElementById("textSpace")) {
 
 function displayDialogue(file = "../assets/script/wakeup-sequence.txt") {
     loadFile(file);
-    !(gamestate == "menu") && printLines()
+    !(gamestate == "menu") && textArray && printLines()
 }
