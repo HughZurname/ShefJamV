@@ -1,7 +1,6 @@
-
+	let weapon = 1;
 	function keypress(evt){
 		var keyCode = evt.which;
-		
 		keylist.push(keyCode);
 		
 	}
@@ -24,6 +23,10 @@
 		}
 		
 	}
+	function switchWeapon(wnumber){
+	//1 = torch //2 = revolver //3 = flaregun //4=noisemaker
+	weapon = wnumber;
+	}
 	function keycheck(){
 
 		if(keylist.includes(87)){
@@ -36,6 +39,26 @@
 		if(keylist.includes(68)){
 			//console.log("right");
 			move(1);
+		}
+		if(keylist.includes(68)){
+			//console.log("right");
+			move(1);
+		}	
+		if(keylist.includes(49)){//1
+			switchWeapon(1);
+			keylist.splice(keylist.indexOf(49),1);
+		}		
+		if(keylist.includes(50)){//2
+			switchWeapon(2);
+			keylist.splice(keylist.indexOf(50),1);
+		}	
+		if(keylist.includes(51)){//3
+			switchWeapon(3);
+			keylist.splice(keylist.indexOf(51),1);
+		}	
+		if(keylist.includes(52)){//4
+			switchWeapon(2);
+			keylist.splice(keylist.indexOf(52),1);
 		}		
 	}	
 
