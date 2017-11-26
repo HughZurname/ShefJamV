@@ -25,12 +25,14 @@ function loadLevel(fileitem,continueornot){
 		let inters = new Array();
 		let ps = new Array();
 		let ls = new Array();
+		let n = new Array();
 	entities.push(player);
 	world.floorlist = floors;
 	world.interacts = inters;
 	world.entitylist = entities;
 	world.projectiles = ps;
 	world.lights = ls;
+	world.noise = n;
 	if(typeof entitycontainer !== 'undefined'){
   		entitycontainer.destroy();
 	}
@@ -116,7 +118,14 @@ function loadLevel(fileitem,continueornot){
 					if(components.length>4){
 						h = parseInt(components[4]);
 					}
-				let enemy = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,xvel:0,yvel:0,entitytype:"enemy",sprite:texturesprite,health:h};
+				let enemy = {x: 64*xcoordGrid, y: 64*ycoordGrid-1,width:64,height:64,xvel:0,yvel:0,entitytype:"enemy",sprite:texturesprite,health:h};
+				
+					if(components.length>5){
+						enemy.ai = components[5];
+						enemy.aitarget = {x:0,y:0};
+						enemy.aitime = 0;
+					}
+				
 				console.log("added enemy");				
 				world.entitylist.push(enemy);
 			}

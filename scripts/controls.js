@@ -120,8 +120,11 @@ function onTheGround(xloc, yloc){
 	var speed = 10;
 	function move(side){
 		if(justdamaged==0){
-		if(Math.abs(player.xvel)<=5){
-			player.xvel = side*speed;
-		}
+			if(Math.abs(player.xvel)<=5){
+				player.xvel = side*speed;
+				
+			}
+			cnoise = {x:player.x,y:player.y};
+			world.noise.push(cnoise);
 		}
 	}

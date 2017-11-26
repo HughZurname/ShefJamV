@@ -222,6 +222,7 @@
 
 		    //world update
 		    worldUpdates();
+			
 		    //logic
 			if(justdamaged>0){justdamaged-=1;}
 			playersprite.alpha = 1-((justdamaged%10)/10);
