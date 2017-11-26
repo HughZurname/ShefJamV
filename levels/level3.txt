@@ -1,3 +1,5 @@
+#Background
+~ 1 7 8 1 assets/images/environment/background-tile.png
 #Floor
 0 0 solid assets/images/environment/panel-L-small.png
 1 0 solid assets/images/environment/panel-M-large.png
@@ -12,6 +14,19 @@
 0 1 solid assets/images/environment/panel-MU-large.png
 0 2 solid assets/images/environment/panel-MU-large.png
 0 3 solid assets/images/environment/panel-MU-large.png
+0 4 solid assets/images/environment/panel-MU-large.png
+0 5 solid assets/images/environment/panel-MU-large.png
+0 6 solid assets/images/environment/panel-MU-large.png
+0 7 solid assets/images/environment/panel-TL-corner.png
+#Ceil
+1 7 solid assets/images/environment/panel-M-small.png
+2 7 solid assets/images/environment/panel-M-small.png
+3 7 solid assets/images/environment/panel-M-small.png
+4 7 solid assets/images/environment/panel-M-small.png
+5 7 solid assets/images/environment/panel-M-small.png
+6 7 solid assets/images/environment/panel-M-small.png
+7 7 solid assets/images/environment/panel-M-small.png
+8 7 solid assets/images/environment/panel-M-small.png
 #Exit
 9 1 exit levels/level4.txt 1 1
 9 2 exit levels/level4.txt 1 1
