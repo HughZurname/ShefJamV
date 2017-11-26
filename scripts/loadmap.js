@@ -109,8 +109,15 @@ function loadLevel(fileitem,continueornot){
 				world.interacts.push(chain);
 			}
 			if(type=="enemy"){
-				let texture = PIXI.Texture.fromImage(text);
-				    texturesprite = new PIXI.Sprite(texture);
+					let textureArray = [];
+					let texture = PIXI.Texture.fromImage(text);
+					textureArray.push(texture);
+					if(components.length>6){
+						let texture2 = PIXI.Texture.fromImage(components[6]);
+						textureArray.push(texture2);
+					}
+					console.log(textureArray[0]);
+				    let texturesprite = new PIXI.Sprite(texture);
 				   texturesprite.position.x = 0;
 				    texturesprite.position.y = 0;
 				    entitycontainer.addChild(texturesprite);
