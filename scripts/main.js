@@ -54,8 +54,6 @@
 			thing.beginFill();
 			thing.moveTo(0,512);	
 			thing.lineTo(1024,512);
-			thing.lineTo(mousex,mousey);
-			thing.lineTo(player.x,player.y);
 			thing.closePath();
 			thing.endFill();
 			//thing.drawCircle(0,0,300);
