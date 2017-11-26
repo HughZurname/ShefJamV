@@ -64,7 +64,9 @@ function physicsUpdate() {
 
 
 			}
-		if(checkCollision(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, floorlist)){
+		if(checkCollision(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.floorlist)){
+			currentprojectile.sprite.destroy();
+			currentprojectile.removed = true;
 			world.projectiles.splice(world.projectiles.indexOf(currentprojectile),1);
 			p--;
 			//remove
@@ -72,8 +74,10 @@ function physicsUpdate() {
 			currentprojectile.x += currentprojectile.xvel;
 			currentprojectile.y += currentprojectile.yvel;
 		}
-		currentprojectile.sprite.position.x = currentprojectile.x;
-		currentprojectile.sprite.position.y = currentprojectile.y;
+		if(!currentprojectile.removed){
+			currentprojectile.sprite.position.x = currentprojectile.x;
+			currentprojectile.sprite.position.y = currentprojectile.y;
+		}
 		
 	}
 	for (let e = 0; e < entities.length; e++) {
