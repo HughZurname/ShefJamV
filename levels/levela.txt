@@ -18,25 +18,25 @@
 16 0 solid assets/images/environment/panel-M-large.png
 17 0 solid assets/images/environment/panel-M-large.png
 #Platforms
-6 1 solid assets/images/environment/shittyBox.png
-7 1 solid assets/images/environment/shittyBox.png
-8 1 solid assets/images/environment/shittyBox.png
-2 3 solid assets/images/environment/shittyBox.png
-3 3 solid assets/images/environment/shittyBox.png
-4 3 solid assets/images/environment/shittyBox.png
-6 5 solid assets/images/environment/shittyBox.png
-7 5 solid assets/images/environment/shittyBox.png
-8 5 solid assets/images/environment/shittyBox.png
-2 7 solid assets/images/environment/shittyBox.png
-3 7 solid assets/images/environment/shittyBox.png
-4 7 solid assets/images/environment/shittyBox.png
-6 9 solid assets/images/environment/shittyBox.png
-7 9 solid assets/images/environment/shittyBox.png
-8 9 solid assets/images/environment/shittyBox.png
+6 1 solid assets/images/environment/shittybox.png
+7 1 solid assets/images/environment/shittybox.png
+8 1 solid assets/images/environment/shittybox.png
+2 3 solid assets/images/environment/shittybox.png
+3 3 solid assets/images/environment/shittybox.png
+4 3 solid assets/images/environment/shittybox.png
+6 5 solid assets/images/environment/shittybox.png
+7 5 solid assets/images/environment/shittybox.png
+8 5 solid assets/images/environment/shittybox.png
+2 7 solid assets/images/environment/shittybox.png
+3 7 solid assets/images/environment/shittybox.png
+4 7 solid assets/images/environment/shittybox.png
+6 9 solid assets/images/environment/shittybox.png
+7 9 solid assets/images/environment/shittybox.png
+8 9 solid assets/images/environment/shittybox.png
 #Small platforms
-9 10 solid assets/images/environment/shittyBox.png
-12 10 solid assets/images/environment/shittyBox.png
-15 10 solid assets/images/environment/shittyBox.png
+9 10 solid assets/images/environment/shittybox.png
+12 10 solid assets/images/environment/shittybox.png
+15 10 solid assets/images/environment/shittybox.png
 15 11 key assets/images/hud/keycard-pickup.png
 #door exit
 16 1 door solid assets/images/environment/door-bottom.png

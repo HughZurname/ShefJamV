@@ -1,11 +1,17 @@
+#background
+~ 1 4 8 1 assets/images/environment/background-tile.png
 #Floor
-0 0 solid assets/images/environment/panel-L-small.png
+0 0 solid assets/images/environment/panel-BL-corner.png
 1 0 solid assets/images/environment/panel-M-large.png
 2 0 solid assets/images/environment/panel-M-large.png
 3 0 solid assets/images/environment/panel-M-large.png
 4 0 solid assets/images/environment/panel-M-large.png
 5 0 solid assets/images/environment/panel-M-large.png
+<<<<<<< HEAD
+6 0 solid assets/images/environment/panel-M-small.png
+=======
 6 0 solid assets/images/environment/panel-M-large.png
+>>>>>>> e7d8f9e4a9373f013f6dd0d7203b9b9a7ae43f83
 7 0 solid assets/images/environment/panel-M-large.png
 8 0 solid assets/images/environment/panel-R-wires.png
 #Right Wall
@@ -15,7 +21,31 @@
 0 1 solid assets/images/environment/panel-MU-large.png
 0 2 solid assets/images/environment/panel-MU-large.png
 0 3 solid assets/images/environment/panel-MU-large.png
+0 4 solid assets/images/environment/panel-MU-large.png
+0 5 solid assets/images/environment/panel-TL-corner.png
 #Exit
+<<<<<<< HEAD
+9 1 exit levels/level2.txt 1 1
+9 2 exit levels/level2.txt 1 1
+#Ceiling
+1 5 solid assets/images/environment/panel-M-large.png
+2 5 solid assets/images/environment/panel-M-large.png
+3 5 solid assets/images/environment/panel-M-large.png
+4 5 solid assets/images/environment/panel-M-large.png
+5 5 solid assets/images/environment/panel-M-large.png
+6 5 solid assets/images/environment/panel-M-large.png
+7 5 solid assets/images/environment/panel-M-large.png
+8 5 solid assets/images/environment/panel-M-large.png
+#Cryrosleep
+1 1 background assets/images/environment/cryro-bottom.png
+1 2 background assets/images/environment/cryro-top-open.png
+#
+3 1 background assets/images/environment/cryro-bottom.png
+3 2 background assets/images/environment/cryro-top-closed.png
+5 1 background assets/images/environment/cryro-bottom.png
+5 2 background assets/images/environment/cryro-top-closed.png
+=======
 9 1 exit levels/level_boss.txt 1 1
 9 2 exit levels/level_boss.txt 1 1
+>>>>>>> e7d8f9e4a9373f013f6dd0d7203b9b9a7ae43f83
 
