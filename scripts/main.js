@@ -36,7 +36,7 @@
 		//HUD
 			HUDcontainer = new PIXI.Container();
 			for(let h = 0; h<5; h++){
-			    let hearts = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");
+			    let hearts = PIXI.Texture.fromImage("assets/images/hud/battery.png");
 			    heartsprites[h] = new PIXI.Sprite(hearts);
 			    heartsprites[h].position.x = 40*h;
 			    heartsprites[h].position.y = 15;
