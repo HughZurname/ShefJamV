@@ -102,6 +102,14 @@ function worldUpdates() {
 			if (distanceFrom < 150){
 				//console.log("Sound of bug plays!");
 			}
+			if(typeof entity.damagedeath !== 'undefined'){
+				entity.damagedeath-=1;
+				if(entity.damagedeath<=0){
+					world.entitylist.splice(world.entitylist.indexOf(entity),1);
+					m--;
+				}
+				entity.sprite.alpha = (entity.damagedeath%10)/10;
+			}
 		}
 		
 	}

@@ -112,7 +112,11 @@ function loadLevel(fileitem,continueornot){
 				   texturesprite.position.x = 0;
 				    texturesprite.position.y = 0;
 				    entitycontainer.addChild(texturesprite);
-				let enemy = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,xvel:0,yvel:0,entitytype:"enemy",sprite:texturesprite};
+					var h = 10;
+					if(components.length>4){
+						h = parseInt(components[4]);
+					}
+				let enemy = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,xvel:0,yvel:0,entitytype:"enemy",sprite:texturesprite,health:h};
 				console.log("added enemy");				
 				world.entitylist.push(enemy);
 			}
