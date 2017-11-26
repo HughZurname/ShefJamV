@@ -7,7 +7,7 @@
 5 0 solid assets/images/environment/panel-M-large.png
 6 0 solid assets/images/environment/panel-M-large.png
 7 0 solid assets/images/environment/panel-M-large.png
-8 0 solid assets/images/environment/panel-BL-corner.png
+8 0 solid assets/images/environment/panel-BR-corner.png
 #Wall
 8 1 solid assets/images/environment/panel-MU-large.png
 8 2 solid assets/images/environment/panel-MU-large.png
