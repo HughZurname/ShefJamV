@@ -93,7 +93,7 @@ function worldUpdates() {
 				if(interactable.source=="stop"){
 					stopMusic();
 				}else{
-					music(interactable.source,playList[songList.indexOf(interactable.source)]);
+					music(interactable.source, playList[songList.indexOf(interactable.source)]);
 				}
 			}
 			if(interactable.type == "spike"){
