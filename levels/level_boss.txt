@@ -1,5 +1,55 @@
 #Floor
-0 0 solid assets/images/environment/panel-M-large.png
+0 0 solid assets/images/environment/panel-BL-large.png
+1 0 solid assets/images/environment/panel-M-large.png
+2 0 solid assets/images/environment/panel-M-large.png
+3 0 solid assets/images/environment/panel-M-large.png
+4 0 solid assets/images/environment/panel-M-large.png
+5 0 solid assets/images/environment/panel-M-large.png
+6 0 solid assets/images/environment/panel-M-large.png
+7 0 solid assets/images/environment/panel-M-large.png
+8 0 solid assets/images/environment/panel-M-large.png
+9 0 solid assets/images/environment/panel-M-large.png
+10 0 solid assets/images/environment/panel-M-large.png
+11 0 solid assets/images/environment/panel-M-large.png
+12 0 solid assets/images/environment/panel-BR-large.png
+#leftwall
+0 1 solid assets/images/environment/panel-MU-large.png
+0 2 solid assets/images/environment/panel-MU-large.png
+0 3 solid assets/images/environment/panel-MU-large.png
+0 4 solid assets/images/environment/panel-MU-large.png
+0 5 solid assets/images/environment/panel-MU-large.png
+0 6 solid assets/images/environment/panel-MU-large.png
+0 7 solid assets/images/environment/panel-MU-large.png
+0 8 solid assets/images/environment/panel-MU-large.png
+0 9 solid assets/images/environment/panel-MU-large.png
+0 10 solid assets/images/environment/panel-MU-large.png
+0 11 solid assets/images/environment/panel-MU-large.png
+0 12 solid assets/images/environment/panel-MU-large.png
+#rightwall
+12 1 solid assets/images/environment/panel-MU-large.png
+12 2 solid assets/images/environment/panel-MU-large.png
+12 3 solid assets/images/environment/panel-MU-large.png
+12 4 solid assets/images/environment/panel-MU-large.png
+12 5 solid assets/images/environment/panel-MU-large.png
+12 6 solid assets/images/environment/panel-MU-large.png
+12 7 solid assets/images/environment/panel-MU-large.png
+12 8 solid assets/images/environment/panel-MU-large.png
+12 9 solid assets/images/environment/panel-MU-large.png
+12 10 solid assets/images/environment/panel-MU-large.png
+12 11 solid assets/images/environment/panel-MU-large.png
+12 12 solid assets/images/environment/panel-MU-large.png
+#roof
+0 13 solid assets/images/environment/panel-TL-large.png
+1 13 solid assets/images/environment/panel-M-large.png
+2 13 solid assets/images/environment/panel-M-large.png
+3 13 solid assets/images/environment/panel-M-large.png
+4 13 solid assets/images/environment/panel-M-large.png
+5 13 solid assets/images/environment/panel-M-large.png
+6 13 solid assets/images/environment/panel-M-large.png
+7 13 solid assets/images/environment/panel-M-large.png
+8 13 solid assets/images/environment/panel-M-large.png
+9 13 solid assets/images/environment/panel-M-large.png
+10 13 solid assets/images/environment/panel-M-large.png
+11 13 solid assets/images/environment/panel-M-large.png
+12 13 solid assets/images/environment/panel-TR-large.png
 #Exit
-9 1 exit levels/level7.txt 1 1
-9 2 exit levels/level7.txt 1 1

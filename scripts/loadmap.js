@@ -39,6 +39,25 @@ function loadLevel(fileitem,continueornot){
 	entitycontainer = new PIXI.Container();
 	let lines = fileitem.split("\n");
 	for(let l = 0; l<lines.length; l++){
+		if(lines[l].charAt(0)=="~"){
+			
+			let sxcoordGrid = parseInt(components[1]);
+			let sycoordGrid = 7-parseInt(components[2]);
+			
+			let excoordGrid = parseInt(components[3]);
+			let eycoordGrid = 7-parseInt(components[4]);
+			
+			let text = components[5];
+			for(var xcoordGrid = sxcoordGrid;xcoordGrid<=excoordGrid;xcoordGrid++){
+				for(var ycoordGrid = sycoordGrid;ycoordGrid<=eycoordGrid;ycoordGrid++){
+					let finalX = ((64*xcoordGrid));
+					let finalY = ((64*ycoordGrid));
+					console.log(finalX+" "+finalY);
+					let currentfloor = {x: finalX, y: finalY,width:w,height:h,texture:text};
+					backgrounds.push(currentfloor);
+				}
+			}
+		}
 		if(lines[l].charAt(0)!="#"){
 			let currentline = lines[l];
 			let components = currentline.split(" ");
