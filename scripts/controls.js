@@ -4,6 +4,7 @@
 		keylist.push(keyCode);
 		
 	}
+	
 	function recalculateMouse(){
 		
 		var offsetx = player.x+player.width/2-512;
