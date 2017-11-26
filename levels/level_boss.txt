@@ -1,0 +1,5 @@
+#Floor
+0 0 solid assets/images/environment/panel-M-large.png
+#Exit
+9 1 exit levels/level7.txt 1 1
+9 2 exit levels/level7.txt 1 1
