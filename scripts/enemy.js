@@ -2,7 +2,7 @@ function entityBehavior(entity){
 //what enemies do
 	if(entity!=player){
 		if(intersectingEntity(player,entity)){
-			console.log("DAMAGE");
+			health -= 20;
 			justdamaged = 50;
 			var appliedx = (player.x+player.width/2-(entity.x+entity.width/2));
 			var appliedy = (player.y+player.height/2-(entity.y+entity.height/2));
