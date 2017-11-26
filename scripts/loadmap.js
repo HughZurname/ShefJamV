@@ -41,6 +41,8 @@ function loadLevel(fileitem,continueornot){
 	for(let l = 0; l<lines.length; l++){
 		if(lines[l].charAt(0)=="~"){
 			
+			let currentline = lines[l];
+			let components = currentline.split(" ");
 			let sxcoordGrid = parseInt(components[1]);
 			let sycoordGrid = 7-parseInt(components[2]);
 			
@@ -53,7 +55,7 @@ function loadLevel(fileitem,continueornot){
 					let finalX = ((64*xcoordGrid));
 					let finalY = ((64*ycoordGrid));
 					console.log(finalX+" "+finalY);
-					let currentfloor = {x: finalX, y: finalY,width:w,height:h,texture:text};
+					let currentfloor = {x: finalX, y: finalY,width:64,height:64,texture:text};
 					backgrounds.push(currentfloor);
 				}
 			}
@@ -185,17 +187,6 @@ function loadLevel(fileitem,continueornot){
   		floorcontainer.destroy();
 	}
 	floorcontainer = new PIXI.Container();
-	for (let i = 0; i < floors.length; i++) {
-		        let cfloor = floors[i];
-		        let panel = PIXI.Texture.fromImage(cfloor.texture);
-		        panelsprite = new PIXI.Sprite(panel);
-		        panelsprite.position.x = cfloor.x;
-		        panelsprite.position.y = cfloor.y;
-			panelsprite.width = cfloor.width;
-			panelsprite.height = cfloor.height;
-			cfloor.sprite = panelsprite;
-		        floorcontainer.addChild(panelsprite);
-	}
 	for (let i = 0; i < backgrounds.length; i++) {
 		        let cfloor = backgrounds[i];
 		        let panel = PIXI.Texture.fromImage(cfloor.texture);
@@ -205,6 +196,17 @@ function loadLevel(fileitem,continueornot){
 				panelsprite.width = cfloor.width;
 				panelsprite.height = cfloor.height;
 				 cfloor.sprite = panelsprite;
+		        floorcontainer.addChild(panelsprite);
+	}
+	for (let i = 0; i < floors.length; i++) {
+		        let cfloor = floors[i];
+		        let panel = PIXI.Texture.fromImage(cfloor.texture);
+		        panelsprite = new PIXI.Sprite(panel);
+		        panelsprite.position.x = cfloor.x;
+		        panelsprite.position.y = cfloor.y;
+			panelsprite.width = cfloor.width;
+			panelsprite.height = cfloor.height;
+			cfloor.sprite = panelsprite;
 		        floorcontainer.addChild(panelsprite);
 	}
 	for (let i = 0; i < world.interacts.length; i++) {
