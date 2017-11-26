@@ -110,14 +110,17 @@ function loadLevel(fileitem,continueornot){
 			}
 			if(type=="enemy"){
 					let textureArray = [];
-					let texture = PIXI.Texture.fromImage(text);
-					textureArray.push(texture);
 					if(components.length>6){
 						let texture2 = PIXI.Texture.fromImage(components[6]);
 						textureArray.push(texture2);
 					}
+					let texture = PIXI.Texture.fromImage(text);
+					textureArray.push(texture);
 					console.log(textureArray[0]);
-				    let texturesprite = new PIXI.Sprite(texture);
+				  //  let texturesprite = new PIXI.Sprite(texture);
+				  texturesprite = new PIXI.extras.AnimatedSprite(textureArray);
+					texturesprite.speed = 0.00001;
+					texturesprite.play();
 				   texturesprite.position.x = 0;
 				    texturesprite.position.y = 0;
 				    entitycontainer.addChild(texturesprite);
