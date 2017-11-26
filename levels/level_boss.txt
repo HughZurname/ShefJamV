@@ -25,6 +25,7 @@
 0 10 solid assets/images/environment/panel-MU-large.png
 0 11 solid assets/images/environment/panel-MU-large.png
 0 12 solid assets/images/environment/panel-MU-large.png
+1 1 music assets/audio/bossBattle.wav
 #rightwall
 12 1 solid assets/images/environment/panel-MU-large.png
 12 2 solid assets/images/environment/panel-MU-large.png

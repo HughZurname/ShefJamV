@@ -57,11 +57,19 @@ function physicsUpdate() {
 	for(let p = 0; p<world.projectiles.length;p++){
 
 		let currentprojectile = world.projectiles[p];
-		if(currentprojectile.type != "bullet" || currentprojectile.type != "monster"){	
-			if (entity.yvel <= 10) {		
+		if(currentprojectile.type != "bullet" && currentprojectile.type != "monster"){	
+			if (currentprojectile.yvel <= 10) {		
 				currentprojectile.yvel+=0.98;
 			}
-			entity.xvel *= 0.9;
+			currentprojectile.xvel *= 0.9;
+		}
+		if(currentprojectile.type == "monster"){
+			if(currentprojectile.time>0){currentprojectile.time-=1}else{
+				currentprojectile.sprite.destroy();
+				currentprojectile.removed = true;
+				world.projectiles.splice(world.projectiles.indexOf(currentprojectile),1);
+				p--;
+			}
 		}
 		if(checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[0]){
 			var centity = checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[1];

@@ -89,7 +89,7 @@ function worldUpdates() {
 				bulletsprite.width = 50;
 				bulletsprite.height = 50;
 				stage.addChild(bulletsprite);
-				let cpro = {x:boss.x,y:boss.y,width:50,height:50,xvel:Math.random()*50-25,yvel:Math.random()*50-25,type:"monster",sprite:bulletsprite};
+				let cpro = {x:boss.x,y:boss.y,width:50,height:50,xvel:Math.random()*50-25,yvel:Math.random()*50-25,time:100,type:"monster",sprite:bulletsprite};
 				world.projectiles.push(cpro);
 				
 			}

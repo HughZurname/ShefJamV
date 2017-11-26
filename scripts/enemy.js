@@ -28,7 +28,7 @@ function entityBehavior(entity){
 					var currentnoise = world.noise[n];
 					var distance = Math.sqrt(Math.pow(currentnoise.x-entity.x,2)+(Math.pow(currentnoise.y-entity.y,2)));
 						//console.log("Alerted: "+distance);
-					if(distance<500){
+					if(distance<100){
 						alertStatus(entity);
 						entity.aitarget.x = currentnoise.x;
 						entity.aitarget.y = currentnoise.y;

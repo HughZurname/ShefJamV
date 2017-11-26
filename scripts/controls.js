@@ -67,7 +67,8 @@
 			let width = 200;
 			let height = 200;
 			if(evt.offsetX>buttonx && evt.offsetX<buttonx+width && evt.offsetY>buttony && evt.offsetY<buttony+height){
-				gamestate = "running";
+				gamestate = "running";	
+				displayDialogue();
 			}
 		}else{
 			shoot();
@@ -115,7 +116,10 @@
 		}	
 		if(keylist.includes(87)){//use
 			use();
-		}		
+		}
+		if(keylist.includes(71)){//use
+			gamestate = "menu";
+		}	
 	}	
 
 function onTheGround(xloc, yloc){	

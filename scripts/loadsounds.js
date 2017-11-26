@@ -11,7 +11,9 @@ sounds.whenLoaded = setup
 
 function setup(sl = songList) {
     return playList = sl.map(s => sounds[s])
+	
 }
+playList[3].play();
 var playing = null;
 function music(name,track){
 	

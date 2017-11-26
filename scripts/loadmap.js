@@ -104,7 +104,8 @@ function loadLevel(fileitem,continueornot){
 			}if(type=="boss"){
 				let finalX = (64*xcoordGrid);
 				let finalY = (64*ycoordGrid);
-				boss = {x:finalX,y:finalY-64, width:128, height:128};
+				boss = {x:finalX,y:finalY-64, width:128, height:128, health:10,entitytype:"boss",sprite:bosssprite};
+				//world.entitylist.push(boss);
 			}
 			if(type=="exit"){
 				let sx = parseInt(components[4]);
@@ -235,7 +236,10 @@ function loadLevel(fileitem,continueornot){
 	}
 	loadspri.alpha = 0;
 	document.getElementById("textSpace").innerHTML = ""
+	console.log("LEVELNAME IS"+fileitem);
+	if(lines[0]=="#background"){
 	displayDialogue();
+	}
 }
 function loadFromFile(world, levelname,continueornot){
 	console.log(continueornot);

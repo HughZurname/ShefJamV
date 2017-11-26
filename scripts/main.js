@@ -283,7 +283,7 @@
 				stage.addChild(starcontainer);
 			}else{
 				if(typeof menucontainer !== 'undefined'){
-					menucontainer.destroy();
+					stage.removeChild(menucontainer);
 				}
 			}
 			renderer.render(stage);
