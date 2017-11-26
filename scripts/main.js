@@ -124,65 +124,81 @@
 		    keycheck();
 		    recalculateMouse();
 			playeractual();
+				test.position.x = mousex;
+				test.position.y = mousey;
 
-
-			/*later
-			let diffx = screenmx-screenpx;
-			let diffy = screenmy-screenpy;
-			let radius = 20;
-			let linegradient = -diffx/diffy;
-			let linec = screenmy-linegradient*screenmx;
-			let a = (Math.pow(linegradient,2)+parseInt(1));
-			let b = 2*linegradient*linec;
-			let c = Math.pow(linec,2)-Math.pow(radius,2);
-			console.log(" "+a+" "+b+" "+c);
-			let quadraticposx = (-b+Math.sqrt(Math.pow(b,2)-4*a*c))/(2*a)
-			let quadraticnegx = (-b-Math.sqrt(Math.pow(b,2)-4*a*c))/(2*a)
-			let posy = linegradient*quadraticposx+linec;
-			let negy = linegradient*quadraticnegx+linec;
-			console.log("Pos coords: "+quadraticposx+","+posy);
-			console.log("neg coords: "+quadraticnegx+","+negy);
-			let viewtrianglex1 = quadraticposx;
-			let viewtriangley1 = posy;
-			let viewtrianglex2 = quadraticnegx;
-			let viewtriangley2 = negy;
-			*/
-			let viewtrianglex0 = screenpx;
-			let viewtriangley0 = screenpy;
-			let viewtrianglex1 = screenpx+300;
-			let viewtriangley1 = screenpy-50;
-			let viewtrianglex2 = screenpx+300;
-			let viewtriangley2 = screenpy+50;
+			if(weapon==1){
+				/*later
+				let diffx = screenmx-screenpx;
+				let diffy = screenmy-screenpy;
+				let radius = 20;
+				let linegradient = -diffx/diffy;
+				let linec = screenmy-linegradient*screenmx;
+				let a = (Math.pow(linegradient,2)+parseInt(1));
+				let b = 2*linegradient*linec;
+				let c = Math.pow(linec,2)-Math.pow(radius,2);
+				console.log(" "+a+" "+b+" "+c);
+				let quadraticposx = (-b+Math.sqrt(Math.pow(b,2)-4*a*c))/(2*a)
+				let quadraticnegx = (-b-Math.sqrt(Math.pow(b,2)-4*a*c))/(2*a)
+				let posy = linegradient*quadraticposx+linec;
+				let negy = linegradient*quadraticnegx+linec;
+				console.log("Pos coords: "+quadraticposx+","+posy);
+				console.log("neg coords: "+quadraticnegx+","+negy);
+				let viewtrianglex1 = quadraticposx;
+				let viewtriangley1 = posy;
+				let viewtrianglex2 = quadraticnegx;
+				let viewtriangley2 = negy;
+				*/
+				let viewtrianglex0 = screenpx;
+				let viewtriangley0 = screenpy;
+				let viewtrianglex1 = screenpx+300;
+				let viewtriangley1 = screenpy-50;
+				let viewtrianglex2 = screenpx+300;
+				let viewtriangley2 = screenpy+50;
 			
-			test.position.x = mousex;
-			test.position.y = mousey;
-			thing.destroy();	
-			thing = new PIXI.Graphics();
-			thing.position.x = screenpx;
-			thing.position.y = screenpy;
-			thing.pivot.x = screenpx;
-			thing.pivot.y = screenpy;
-			if(screenmx-screenpx == 0){
-				if(screenmy-screenpy>0){
-					thing.rotation = Math.PI/2;
+				thing.destroy();	
+				thing = new PIXI.Graphics();
+				thing.position.x = screenpx;
+				thing.position.y = screenpy;
+				thing.pivot.x = screenpx;
+				thing.pivot.y = screenpy;
+				if(screenmx-screenpx == 0){
+					if(screenmy-screenpy>0){
+						thing.rotation = Math.PI/2;
+					}else{
+						thing.rotation = -Math.PI/2;
+					}
 				}else{
-					thing.rotation = -Math.PI/2;
-				}
-			}else{
 				
-				thing.rotation = Math.atan((screenmy-screenpy)/(screenmx-screenpx));
-				if(screenmx<screenpx){
-					thing.rotation +=Math.PI;
+					thing.rotation = Math.atan((screenmy-screenpy)/(screenmx-screenpx));
+					if(screenmx<screenpx){
+						thing.rotation +=Math.PI;
+					}
 				}
+				
+				thing.beginFill()
+				.drawPolygon([-10000,-10000,10240,-10000,10240,1000,-1000,1000])
+				.drawPolygon([viewtrianglex0 ,viewtriangley0,viewtrianglex1 ,viewtriangley1,viewtrianglex2 ,viewtriangley2] )
+				.addHole();
+				HUDcontainer.addChild(thing);
+				blackdrop.mask = thing;	
+			}else{
+			    let blackfront = PIXI.Texture.fromImage("assets/images/hud/blackbox.png");
+			    blackdrop.destroy();
+			    blackdrop = new PIXI.Sprite(blackfront);
+			    blackdrop.position.x = 0;
+			    blackdrop.position.y = 0;
+			    blackdrop.width = 1024;
+			    blackdrop.height = 512;
+		            blackdrop.alpha = 0.6;
+			    HUDcontainer.addChild(blackdrop);
 			}
-			thing.beginFill()
-			.drawPolygon([-1000,-1000,1024,-1000,1024,1000,0,1000])
-			.drawPolygon([viewtrianglex0 ,viewtriangley0,viewtrianglex1 ,viewtriangley1,viewtrianglex2 ,viewtriangley2] )
-			.addHole();
-			HUDcontainer.addChild(thing);
+
+
+
 			stage.removeChild(HUDcontainer);
 			stage.addChild(HUDcontainer);
-			blackdrop.mask = thing;	
+
 		    //world update
 		    worldUpdates();
 		    //logic
