@@ -1,0 +1,30 @@
+#Floor
+0 0 solid assets/images/environment/panel-L-small.png
+1 0 solid assets/images/environment/panel-M-large.png
+2 0 solid assets/images/environment/panel-M-large.png
+3 1 solid assets/images/environment/panel-M-large.png
+4 2 solid assets/images/environment/panel-M-large.png
+7 1 solid assets/images/environment/panel-M-large.png
+#Platforms
+5 1 solid assets/images/environment/shittyBox.png
+6 1 solid assets/images/environment/shittyBox.png
+7 1 solid assets/images/environment/shittyBox.png
+2 3 solid assets/images/environment/shittyBox.png
+3 3 solid assets/images/environment/shittyBox.png
+4 3 solid assets/images/environment/shittyBox.png
+5 5 solid assets/images/environment/shittyBox.png
+6 5 solid assets/images/environment/shittyBox.png
+7 5 solid assets/images/environment/shittyBox.png
+2 7 solid assets/images/environment/shittyBox.png
+3 7 solid assets/images/environment/shittyBox.png
+4 7 solid assets/images/environment/shittyBox.png
+5 9 solid assets/images/environment/shittyBox.png
+6 9 solid assets/images/environment/shittyBox.png
+7 9 solid assets/images/environment/shittyBox.png
+#Small platforms
+9 10 solid assets/images/environment/shittyBox.png
+11 10 solid assets/images/environment/shittyBox.png
+13 10 solid assets/images/environment/shittyBox.png
+13 11 key keycard-pickup.png assets/images/hud/keycard-pickup.png
+
+ 
