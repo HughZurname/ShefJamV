@@ -60,5 +60,6 @@
 1 4 solid assets/images/environment/platform-single.png
 2 4 solid assets/images/environment/platform-single.png
 
-
+#
+7 1 boss assets/images/enemies/boss.png
 #Exit
