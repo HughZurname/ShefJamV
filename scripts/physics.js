@@ -74,7 +74,7 @@ function physicsUpdate() {
 					console.log("hit entity as falling block");
 					centity.health -= 10;
 					if(centity.health<=0){
-						centity.damagedeath = 100;
+						centity.damagedeath = 40;
 					}
 				}
 				
