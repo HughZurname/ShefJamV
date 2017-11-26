@@ -43,8 +43,6 @@ function checkCollision(xloc, yloc, ewidth, eheight, currentfloorlist) {
 	return false;
 }
 
-
-
 function physicsUpdate() {
 	for (let e = 0; e < entities.length; e++) {
 		entity = entities[e];

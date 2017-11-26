@@ -27,6 +27,17 @@
 		}		
 	}	
 
+
+function mouseDown(){
+	
+}
+
+function shootRevolver(){
+	let bullet = {
+		
+	}
+}
+
 function onTheGround(xloc, yloc){	
               //  console.log(xloc+","+yloc+" floors:"+world.floorlist);
 		var toreturn = checkCollision(xloc,yloc,player.width,1,world.floorlist);
