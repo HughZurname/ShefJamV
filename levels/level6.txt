@@ -33,5 +33,5 @@
 18 3 enemy assets/images/enemies/bug-0.png
 19 3 enemy assets/images/enemies/bug-0.png
 #Exit
-23 4 exit levels/level6.txt 1 1
-23 5 exit levels/level6.txt 1 1
+23 4 exit levels/level7.txt 1 1
+23 5 exit levels/level7.txt 1 1

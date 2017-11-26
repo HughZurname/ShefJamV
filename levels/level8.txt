@@ -1,5 +1,5 @@
 #Floor
-0 0 solid assets/images/environment/panel-L-small.png
+0 0 solid assets/images/environment/panel-BL-corner.png
 1 0 solid assets/images/environment/panel-M-large.png
 2 0 solid assets/images/environment/panel-M-large.png
 3 0 solid assets/images/environment/panel-M-large.png
@@ -12,9 +12,11 @@
 #2 1 music assets/audio/sadSam.wav
 #5 1 music assets/audio/evenSadderSam.wav
 #5 1 music stop
+2 1 key 
+5 1 door assets/images/environment/door-bottom.png
 0 1 solid assets/images/environment/panel-MU-large.png
 0 2 solid assets/images/environment/panel-MU-large.png
 0 3 solid assets/images/environment/panel-MU-large.png
 #Exit
-9 1 exit levels/level2.txt -1 1
-9 2 exit levels/level2.txt -1 1
+9 1 exit levels/level7.txt 1 1
+9 2 exit levels/level7.txt 1 1
