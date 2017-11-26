@@ -229,6 +229,7 @@ function loadLevel(fileitem,continueornot){
 		continueLoad();
 	}
 	loadspri.alpha = 0;
+	document.getElementById("textSpace").innerHTML = ""
 }
 function loadFromFile(world, levelname,continueornot){
 	console.log(continueornot);
