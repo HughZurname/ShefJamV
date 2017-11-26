@@ -18,5 +18,5 @@
 16 -1 chain assets/images/environment/door-bottom.png
 16 0 chain assets/images/environment/door-top.png
 
-16 -1 exit levels/level11.txt 1 1
-16 0 exit levels/level11.txt 1 1
+16 -1 exit levels/level_boss.txt 1 1
+16 0 exit levels/level_boss.txt 1 1
