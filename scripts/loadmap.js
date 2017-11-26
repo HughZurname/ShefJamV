@@ -22,10 +22,12 @@ function loadLevel(fileitem,continueornot){
 	let entities = new Array();
 		let floors = new Array();
 		let inters = new Array();
+		let ps = new Array();
 	entities.push(player);
 	world.floorlist = floors;
 	world.interacts = inters;
 	world.entitylist = entities;
+	world.projectiles = ps;
 	if(typeof entitycontainer !== 'undefined'){
   		entitycontainer.destroy();
 	}
@@ -64,6 +66,10 @@ function loadLevel(fileitem,continueornot){
 				console.log("added interact");				
 				world.interacts.push(exit);
 			}
+			if(type=="chain"){
+				let chain = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"chain"};				
+				world.interacts.push(chain);
+			}
 			if(type=="enemy"){
 				let texture = PIXI.Texture.fromImage(text);
 				    texturesprite = new PIXI.Sprite(texture);
@@ -91,6 +97,7 @@ function loadLevel(fileitem,continueornot){
 		        panelsprite.position.y = cfloor.y;
 			panelsprite.width = cfloor.width;
 			panelsprite.height = cfloor.height;
+			cfloor.sprite = panelsprite;
 		        floorcontainer.addChild(panelsprite);
 	}
 	stage.addChild(floorcontainer);

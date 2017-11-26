@@ -4,10 +4,12 @@
 		let entities = new Array();
 		let floors = new Array();
 		let inters = new Array();
+		let ps = new Array();
 		let world = {
 			entitylist: entities,
 			floorlist: floors,
-			interacts: inters
+			interacts: inters,
+			projectiles:ps
 		};
 		let player = {};
 		let drawnstars = new Array(10000);
@@ -15,6 +17,7 @@
 		window.addEventListener("keydown", keypress, false);
 		window.addEventListener("keyup", keyup, false);
 		window.addEventListener("mousemove", mousemove, false);
+		window.addEventListener("click", clickm, false);
 		let health = 100;
 		let heartsprites = {};
 		function continueLoad() {
