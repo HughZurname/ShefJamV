@@ -1,6 +1,6 @@
 const velGen = n => (Math.sin(n)-1)
 
-	const stars = Array(100).fill().map(e => e = {
+	const stars = Array(10000).fill().map(e => e = {
 		x:Math.random()*1024,
 		y:Math.random()*512,
 		xvel: velGen(Math.random() * 2),
