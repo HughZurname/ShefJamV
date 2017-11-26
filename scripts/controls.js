@@ -23,6 +23,21 @@
 		}
 		
 	}
+	function shoot(){
+		if(weapon==2){  
+		 let bullettexture = PIXI.Texture.fromImage("assets/images/Shittybullet.png");
+		    bulletsprite = new PIXI.Sprite(bullettexture);
+		   bulletsprite.position.x = 0;
+		    bulletsprite.position.y = 0;
+		    stage.addChild(bulletsprite);
+			let bullet = {x:player.x+player.width/2, y:player.y+player.height/2,xvel:mousxvel,yvel:mousyvel,type:"bullet"
+			width:1,height:1,sprite:bulletsprite};
+		}
+	}
+	function clickm(evt){
+		shoot();
+		
+	}
 	function switchWeapon(wnumber){
 	//1 = torch //2 = revolver //3 = flaregun //4=noisemaker
 	weapon = wnumber;
