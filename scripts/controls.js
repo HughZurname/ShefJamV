@@ -129,7 +129,7 @@ function onTheGround(xloc, yloc){
 		if(justdamaged==0){
 		if(onTheGround(player.x,player.y+player.height+1)){
 			//console.log("jump");
-			player.yvel=-15 	;
+			player.yvel=-17 	;
 		}
 		}
 	}
