@@ -5,9 +5,9 @@
 3 1 solid assets/images/environment/panel-M-large.png
 4 2 solid assets/images/environment/panel-M-large.png
 7 1 solid assets/images/environment/panel-M-large.png
-7 3 solid assets/images/environment/chain2.png
-7 4 solid assets/images/environment/chain2.png
-7 5 solid assets/images/environment/chain2.png
+#7 3 solid assets/images/environment/chain2.png
+7 4 solid assets/images/environment/panel-M-large.png
+7 5 chain assets/images/environment/chain2.png
 8 0 solid assets/images/environment/panel-R-wires.png
 #Right Wall
 0 1 solid assets/images/environment/panel-MU-large.png

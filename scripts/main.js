@@ -98,6 +98,14 @@
 					view: document.getElementById("game-canvas")
 				}
 			);
+			let bigstart = PIXI.Texture.fromImage("assets/images/environment/star-0.png");
+			bigstar = new PIXI.Sprite(bigstart);
+			bigstar.position.x = 1024;
+			bigstar.position.y = 512;
+			var blurf = new PIXI.filters.BlurFilter();
+			blurf.blur = 10;
+			bigstar.filters = [blurf];
+			stage.addChild(bigstar);
 			starcontainer = new PIXI.ParticleContainer();
 			for (i = 0; i < 10000; i++) {
 				let startex = PIXI.Texture.fromImage("assets/images/environment/star-0.png");
@@ -125,9 +133,10 @@
 		    keycheck();
 		    recalculateMouse();
 			playeractual();
-				test.position.x = mousex;
-				test.position.y = mousey;
-
+				test.position.x = mousex-5;
+				test.position.y = mousey-5;
+				test.width = 10;
+				test.height = 10;
 			if(weapon==1){
 				/*later
 				let diffx = screenmx-screenpx;
