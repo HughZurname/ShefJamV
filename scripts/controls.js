@@ -60,8 +60,17 @@
 		}
 	}
 	function clickm(evt){
-		shoot();
-		
+		if(gamestate=="menu"){
+			let buttonx = 400;
+			let buttony = 300;
+			let width = 200;
+			let height = 200;
+			if(evt.offsetX>buttonx && evt.offsetX<buttonx+width && evt.offsetY>buttony && evt.offsetY<buttony+height){
+				gamestate = "running";
+			}
+		}else{
+			shoot();
+		}
 	}
 	function switchWeapon(wnumber){
 	//1 = torch //2 = revolver //3 = flaregun //4=noisemaker

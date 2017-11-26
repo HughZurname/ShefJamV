@@ -9,7 +9,7 @@ function render(){
 	starcontainer.pivot.y = -offsety;
 
 
-
+	
 	for(var s = 0; s<stars.length; s++){
 		stars[s].x +=stars[s].xvel;
 		stars[s].y +=stars[s].yvel;
@@ -27,6 +27,7 @@ function render(){
 			ce.sprite.position.y = ce.y;
 		}
 	}
+	
 	if(health<=80){
 		heartsprites[4].alpha = 0;
 	}if(health<=60){
