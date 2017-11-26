@@ -16,7 +16,7 @@ function loadWorld(spawnx,spawny,filename) {
 		xvel: 0,
 		yvel: 0,
 		width: 32,
-		height: 32,
+		height: 64,
 		entitytype: "player"
 	};
 	entities.push(player);
@@ -75,6 +75,11 @@ function calculateDistance(playerX,playerY,entityX,entityY)
 function worldUpdates() {
 	for(let m = 0; m<world.interacts.length;m++){
 		let interactable = world.interacts[m];
+		if(interactable.type == "key"){
+			interactable.sambob+=1;
+			interactable.sambob=interactable.sambob%100;
+			interactable.sprite.position.y=interactable.y+(Math.cos(interactable.sambob*Math.PI/50)*10);
+		}
 		if(rawCollide(player.x,player.y,player.width,player.height,interactable.x,interactable.y,interactable.width,interactable.height)){
 			if(interactable.type == "exit"){
 				loadspri.alpha = 1;

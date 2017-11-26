@@ -93,7 +93,7 @@ function loadLevel(fileitem,continueornot){
 				console.log("added interact");				
 				world.interacts.push(spike);
 			}if(type=="key"){
-				let key = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"key", texture:"assets/images/hud/keycard-pickup.png"};
+				let key = {x: 64*xcoordGrid+16, y: 64*ycoordGrid+16,width:32,height:32,type:"key",sambob:100, texture:"assets/images/hud/keycard-pickup.png"};
 				console.log("added interact");				
 				world.interacts.push(key);
 			}if(type=="door"){

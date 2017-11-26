@@ -27,7 +27,7 @@
 
 
 			
-		    let playertexture = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");
+		    let playertexture = PIXI.Texture.fromImage("assets/images/player/player.png");
 		    playersprite = new PIXI.Sprite(playertexture);
 		    playersprite.position.x = 0;
 		    playersprite.position.y = 0;
