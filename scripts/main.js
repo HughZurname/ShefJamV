@@ -98,14 +98,24 @@
 					view: document.getElementById("game-canvas")
 				}
 			);
-			let bigstart = PIXI.Texture.fromImage("assets/images/environment/star-0.png");
+			/*
+			let bigstart = PIXI.Texture.fromImage("assets/images/environment/star-3.png");
 			bigstar = new PIXI.Sprite(bigstart);
-			bigstar.position.x = 1024;
-			bigstar.position.y = 512;
+			bigstar.position.x = 512;
+			bigstar.position.y = 512;	
+			let bigstart2 = PIXI.Texture.fromImage("assets/images/environment/star-3.png");
+			bigstar2 = new PIXI.Sprite(bigstart);
+			bigstar2.position.x = 512;
+			bigstar2.position.y = 512;
 			var blurf = new PIXI.filters.BlurFilter();
-			blurf.blur = 10;
+			blurf.blur =200;
 			bigstar.filters = [blurf];
+			var blurf2 = new PIXI.filters.BlurFilter();
+			blurf2.blur = 100;
+			bigstar2.filters = [blurf];
 			stage.addChild(bigstar);
+			stage.addChild(bigstar2);
+			*/
 			starcontainer = new PIXI.ParticleContainer();
 			for (i = 0; i < 10000; i++) {
 				let startex = PIXI.Texture.fromImage("assets/images/environment/star-0.png");
