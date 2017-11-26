@@ -120,6 +120,12 @@
 		if(keylist.includes(71)){//use
 			gamestate = "menu";
 		}	
+		if(keylist.includes(72)){//use
+			playList[3].play();
+		}		
+		if(keylist.includes(74)){//use
+			//playList[3].pause();
+		}	
 	}	
 
 function onTheGround(xloc, yloc){	
