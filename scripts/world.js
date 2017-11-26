@@ -72,9 +72,29 @@ function calculateDistance(playerX,playerY,entityX,entityY)
 	var realDistance = Math.sqrt(Math.pow(horizontalDis, 2) + Math.pow(verticalDis,2));
 	return realDistance;
 }
-
+let bossshootability = 100;
 
 function worldUpdates() {
+	
+	if(typeof boss !== 'undefined'){
+		if(bossshootability>0){
+			bossshootability-=1;
+		}else{
+			bossshootability = 100;
+			for(c = 0;c<20; c++){   
+				let bullettexture = PIXI.Texture.fromImage("assets/images/environment/button.png");
+				bulletsprite = new PIXI.Sprite(bullettexture);
+				bulletsprite.position.x = boss.x;
+				bulletsprite.position.y = boss.y;  
+				bulletsprite.width = 50;
+				bulletsprite.height = 50;
+				stage.addChild(bulletsprite);
+				let cpro = {x:boss.x,y:boss.y,width:50,height:50,xvel:Math.random(),yvel:Math.random(),type:"monster",sprite:bulletsprite};
+				
+			}
+			
+		}
+	}
 	for(let m = 0; m<world.interacts.length;m++){
 		let interactable = world.interacts[m];
 		if(interactable.type == "key"){

@@ -7,6 +7,7 @@
 		let floors = new Array();
 		let inters = new Array();
 		let ps = new Array();
+		let boss = undefined;
 		let keycardcount = 0;
 		let world = {
 			entitylist: entities,

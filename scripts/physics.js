@@ -77,7 +77,13 @@ function physicsUpdate() {
 						centity.damagedeath = 40;
 					}
 				}
-				
+				if(currentprojectile.type == "monster"){
+					console.log("hit entity as falling block");
+					centity.health -= 10;
+					if(centity.health<=0){
+						centity.damagedeath = 40;
+					}
+				}
 				currentprojectile.sprite.destroy();
 				currentprojectile.removed = true;
 				world.projectiles.splice(world.projectiles.indexOf(currentprojectile),1);
