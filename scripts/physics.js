@@ -57,7 +57,7 @@ function physicsUpdate() {
 	for(let p = 0; p<world.projectiles.length;p++){
 
 		let currentprojectile = world.projectiles[p];
-		if(currentprojectile.type != "bullet"){	
+		if(currentprojectile.type != "bullet" || currentprojectile.type != "monster"){	
 			if (entity.yvel <= 10) {		
 				currentprojectile.yvel+=0.98;
 			}
@@ -66,9 +66,15 @@ function physicsUpdate() {
 		if(checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[0]){
 			var centity = checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[1];
 			if(centity.entitytype == "player"){
-				
+				if(currentprojectile.type == "monster"){
+					if(justdamaged==0){
+						health -= 20;
+						justdamaged = 40;
+					}
+				}
 			}else{
 				//console.log("removing due to entity collision"+checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[1].type);
+				if(!(currentprojectile.type == "monster")){
 				console.log("hit entity as projectile: "+currentprojectile.type);
 				if(currentprojectile.type == "fallingblock"){
 					console.log("hit entity as falling block");
@@ -77,26 +83,23 @@ function physicsUpdate() {
 						centity.damagedeath = 40;
 					}
 				}
-				if(currentprojectile.type == "monster"){
-					console.log("hit entity as falling block");
-					centity.health -= 10;
-					if(centity.health<=0){
-						centity.damagedeath = 40;
-					}
-				}
+			
 				currentprojectile.sprite.destroy();
 				currentprojectile.removed = true;
 				world.projectiles.splice(world.projectiles.indexOf(currentprojectile),1);
 				p--;
+				}
 			}
 			//remove
 		}
 			if(checkCollision(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.floorlist)){
+				if(!(currentprojectile.type == "monster")){
 				currentprojectile.sprite.destroy();
 				currentprojectile.removed = true;
 				world.projectiles.splice(world.projectiles.indexOf(currentprojectile),1);
 				p--;
 				//remove
+				}
 			}else{
 				currentprojectile.x += currentprojectile.xvel;
 				currentprojectile.y += currentprojectile.yvel;
