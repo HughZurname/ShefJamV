@@ -15,10 +15,12 @@ function loadWorld(spawnx,spawny,filename) {
 		y: spawny,
 		xvel: 0,
 		yvel: 0,
-		width: 32,
-		height: 64,
+		width: 48,
+		height: 96,
 		entitytype: "player"
 	};
+	respawnx = spawnx;
+	respawny = spawny;
 	entities.push(player);
 	loadFromFile(world,filename,true);
 	//defaultWorld();

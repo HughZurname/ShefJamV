@@ -1,5 +1,7 @@
 		//initialisation
 		let justdamaged = 0;
+		let respawnx = 100;
+		let respawny = -100;
 		let keylist = new Array();
 		let entities = new Array();
 		let floors = new Array();
@@ -30,7 +32,9 @@
 		    let playertexture = PIXI.Texture.fromImage("assets/images/player/player.png");
 		    playersprite = new PIXI.Sprite(playertexture);
 		    playersprite.position.x = 0;
-		    playersprite.position.y = 0;
+		    playersprite.position.y = 0;  
+			playersprite.width = 48;
+		    playersprite.height = 96;
 		    stage.addChild(playersprite); 
 			 let te = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");
 		    test = new PIXI.Sprite(te);
@@ -165,8 +169,8 @@
 		let screenpy = 0;
 		function playeractual(){
 			
-			screenpx = -player.width/2+512;
-			screenpy = -player.height/2+400;
+			screenpx = 512;
+			screenpy = 400;
 		}
 		function update() {
 		    //input
@@ -183,9 +187,9 @@
 					let viewtrianglex0 = screenpx;
 					let viewtriangley0 = screenpy;
 					let viewtrianglex1 = screenpx+300;
-					let viewtriangley1 = screenpy-50;
+					let viewtriangley1 = screenpy-100;
 					let viewtrianglex2 = screenpx+300;
-					let viewtriangley2 = screenpy+50;
+					let viewtriangley2 = screenpy+100;
 				
 					thing.destroy();	
 					thing = new PIXI.Graphics();
@@ -233,6 +237,16 @@
 
 		    //world update
 		    worldUpdates();
+			if(health<0){
+				health = 100;
+				player.x = respawnx;
+				player.y = respawny;
+			}
+			if(player.y>1000){
+				health = 100;
+				player.x = respawnx;
+				player.y = respawny;
+			}
 			
 		    //logic
 			if(justdamaged>0){justdamaged-=1;}

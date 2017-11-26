@@ -139,7 +139,7 @@ world.projectiles.push(fallingblock);
 
 			if (checkCollision(entity.x + entity.xvel, entity.y, entity.width, entity.height, floorlist)) {
 				entity.xvel = 0;
-				console.log("Collided X");
+				//console.log("Collided X");
 				//console.log(player.xvel);
 				if (checkCollision(entity.x, entity.y + entity.yvel, entity.width, entity.height, floorlist)) {
 					entity.yvel = 0;

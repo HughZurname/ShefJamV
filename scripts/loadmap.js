@@ -83,7 +83,8 @@ function loadLevel(fileitem,continueornot){
 			if(type=="exit"){
 				let sx = parseInt(components[4]);
 				let sy = 7-parseInt(components[5]);
-				sx*=64;sy*=64-1;
+				sx*=64;sy*=64;
+				sy-=64;
 				let exit = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"exit",level:text,spawnx:sx,spawny:sy, 
 				texture:"assets/images/Shittybullet.png"};
 				console.log("added interact");				
