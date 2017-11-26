@@ -64,10 +64,20 @@ function physicsUpdate() {
 			entity.xvel *= 0.9;
 		}
 		if(checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[0]){
-			if(checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[1].entitytype == "player"){
+			var centity = checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[1];
+			if(centity.entitytype == "player"){
 				
 			}else{
 				//console.log("removing due to entity collision"+checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[1].type);
+				console.log("hit entity as projectile: "+currentprojectile.type);
+				if(currentprojectile.type == "fallingblock"){
+					console.log("hit entity as falling block");
+					centity.health -= 10;
+					if(centity.health<=0){
+						centity.damagedeath = 100;
+					}
+				}
+				
 				currentprojectile.sprite.destroy();
 				currentprojectile.removed = true;
 				world.projectiles.splice(world.projectiles.indexOf(currentprojectile),1);
