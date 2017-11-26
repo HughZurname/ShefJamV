@@ -1,0 +1,88 @@
+if(viewtrianglex0<viewtrianglex1){
+				if(viewtrianglex0<viewtrianglex2){
+					//view triangle 0 has smallest x (unchanged)
+				}else{
+					//view triangle 2 has smallest x
+					let tempx = viewtrianglex2;
+					let tempy = viewtraingley2;
+					viewtrianglex2 = viewtrianglex0;
+					viewtriangley2 = viewtriangley0;
+					viewtrianglex0 = tempx;	
+					viewtriangley0 = tempy;	
+				}
+			}else{
+			if(viewtrianglex1<viewtrianglex2){
+					//view triangle 1 has smallest x
+					let tempx = viewtrianglex1;
+					let tempy = viewtriangley1;
+					viewtrianglex1 = viewtrianglex0;
+					viewtriangley1 = viewtriangley0;
+					viewtrianglex0 = tempx;	
+					viewtriangley0 = tempy;	
+				}else{
+					//view triangle 2 has smallest x
+					let tempx = viewtrianglex2;
+					let tempy = viewtriangley2;
+					viewtrianglex2 = viewtrianglex0;
+					viewtriangley2 = viewtriangley0;
+					viewtrianglex0 = tempx;	
+					viewtriangley0 = tempy;	
+				}
+			}
+			if(viewtriangley0<viewtriangley1){
+				if(viewtriangley0<viewtriangley2){
+					//view triangle 0 has smallest y 
+					let tempx = viewtrianglex1;
+					let tempy = viewtriangley1;
+					viewtrianglex1 = viewtrianglex0;
+					viewtriangley1 = viewtriangley0;
+					viewtrianglex0 = tempx;	
+					viewtriangley0 = tempy;	
+				}else{
+					//view triangle 2 has smallest y
+					let tempx = viewtrianglex2;
+					let tempy = viewtriangley2;
+					viewtrianglex2 = viewtrianglex1;
+					viewtriangley2 = viewtriangley1;
+					viewtrianglex1 = tempx;	
+					viewtriangley1 = tempy;	
+				}
+			}else{
+			if(viewtriangley1<viewtriangley2){
+					//view triangle 1 has smallest y (unchanged)
+				}else{
+					//view triangle 2 has smallest y
+					
+					let tempx = viewtrianglex2;
+					let tempy = viewtriangley2;
+					viewtrianglex2 = viewtrianglex1;
+					viewtriangley2 = viewtriangley1;
+					viewtrianglex1 = tempx;	
+					viewtriangley1 = tempy;	
+				}
+			}
+			if(viewtriangley0>viewtriangley1){
+				if(viewtriangley0>viewtriangley2){
+					//view triangle 0 has largest y 
+					let tempx = viewtrianglex2;
+					let tempy = viewtriangley2;
+					viewtrianglex2 = viewtrianglex0;
+					viewtriangley2 = viewtriangley0;
+					viewtrianglex0 = tempx;	
+					viewtriangley0 = tempy;	
+				}else{
+					//view triangle 2 has largest y (unchanged)
+				}
+			}else{
+			if(viewtriangley1>viewtriangley2){
+					//view triangle 1 has largest y 
+					let tempx = viewtrianglex2;
+					let tempy = viewtriangley2;
+					viewtrianglex2 = viewtrianglex1;
+					viewtriangley2 = viewtriangley1;
+					viewtrianglex1 = tempx;	
+					viewtriangley1 = tempy;	
+				}else{
+					//view triangle 2 has largest y (unchanged)
+				}
+			}
