@@ -177,7 +177,7 @@
 				}
 				
 				thing.beginFill()
-				.drawPolygon([-10000,-10000,10240,-10000,10240,1000,-1000,1000])
+				.drawPolygon([-10000,-10000,10240,-10000,10240,10000,-10000,10000])
 				.drawPolygon([viewtrianglex0 ,viewtriangley0,viewtrianglex1 ,viewtriangley1,viewtrianglex2 ,viewtriangley2] )
 				.addHole();
 				HUDcontainer.addChild(thing);
