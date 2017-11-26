@@ -5,6 +5,10 @@ function render(){
 	stage.pivot.y = offsety;
 	HUDcontainer.pivot.x = -offsetx;
 	HUDcontainer.pivot.y = -offsety;
+	if(gamestate == "menu"){
+		menucontainer.pivot.x = -offsetx;
+		menucontainer.pivot.y = -offsety;
+	}
 	starcontainer.pivot.x = -offsetx;
 	starcontainer.pivot.y = -offsety;
 

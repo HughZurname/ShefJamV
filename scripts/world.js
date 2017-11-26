@@ -89,6 +89,30 @@ function worldUpdates() {
 					music(interactable.source,playList[songList.indexOf(interactable.source)]);
 				}
 			}
+			if(interactable.type == "spike"){
+				player.damagedeath = 100;
+				player.health -= 100;
+			}			
+			if(interactable.type == "key"){
+				interactable.sprite.destroy();
+				world.interacts.splice(m,1);
+				m--;
+				keycardcount+=1;
+				console.log("Keycard picked up");
+			}
+			if(interactable.type == "door"){
+					if(keylist.includes(87)){//use
+						if(keycardcount>=1){
+							keycardcount-=1;
+							toremove1 = interactable.floors[0];
+							toremove2 = interactable.floors[1];
+							toremove1.sprite.alpha = 0.2;
+							toremove2.sprite.alpha = 0.2;
+							world.floorlist.splice(world.floorlist.indexOf(toremove1),1);
+							world.floorlist.splice(world.floorlist.indexOf(toremove2),1);
+						}
+					}
+			}
 		}
 	}
 	
