@@ -10,7 +10,7 @@
 			interacts: inters
 		};
 		let player = {};
-		let drawnstars = new Array(1000);
+		let drawnstars = new Array(10000);
 		//event listener
 		window.addEventListener("keydown", keypress, false);
 		window.addEventListener("keyup", keyup, false);
@@ -35,8 +35,40 @@
 		    stage.addChild(test);
 		//HUD
 			HUDcontainer = new PIXI.Container();
+			
+			 let blackfront = PIXI.Texture.fromImage("assets/images/hud/blackbox.png");
+			    blackdrop = new PIXI.Sprite(blackfront);
+			    blackdrop.position.x = 0;
+			    blackdrop.position.y = 0;
+			    blackdrop.width = 1024;
+			    blackdrop.height = 512;
+		            blackdrop.alpha = 0.6;
+			    HUDcontainer.addChild(blackdrop);
+
+			thing = new PIXI.Graphics();
+			thing2 = new PIXI.Graphics();
+			//bottom
+			thing.beginFill();
+			thing.moveTo(0,512);	
+			thing.lineTo(1024,512);
+			thing.lineTo(mousex,mousey);
+			thing.lineTo(player.x,player.y);
+			thing.closePath();
+			thing.endFill();
+			//thing.drawCircle(0,0,300);
+			//
+
+			stage.addChild(thing);
+
+			blackdrop.mask = thing;	
+
 			for(let h = 0; h<5; h++){
-			    let hearts = PIXI.Texture.fromImage("assets/images/hud/battery.png");
+			    let background = PIXI.Texture.fromImage("assets/images/hud/battery-empty.png");
+			    heartspr = new PIXI.Sprite(background);
+			    heartspr.position.x = 40*h;
+			    heartspr.position.y = 15;
+			    HUDcontainer.addChild(heartspr);
+			    let hearts = PIXI.Texture.fromImage("assets/images/hud/battery-full.png");
 			    heartsprites[h] = new PIXI.Sprite(hearts);
 			    heartsprites[h].position.x = 40*h;
 			    heartsprites[h].position.y = 15;
@@ -66,7 +98,7 @@
 				}
 			);
 			starcontainer = new PIXI.ParticleContainer();
-			for (i = 0; i < 100; i++) {
+			for (i = 0; i < 10000; i++) {
 				let startex = PIXI.Texture.fromImage("assets/images/environment/star-0.png");
 				drawnstars[i] = new PIXI.Sprite(startex);
 				drawnstars[i].position.x = Math.random() * 1024;
@@ -80,12 +112,77 @@
 		let mousey = 0;
 		let screenmx = 0;
 		let screenmy = 0;
+		let screenpx = 0;
+		let screenpy = 0;
+		function playeractual(){
+			
+			screenpx = -player.width/2+512;
+			screenpy = -player.height/2+400;
+		}
 		function update() {
 		    //input
 		    keycheck();
 		    recalculateMouse();
+			playeractual();
+
+
+			/*later
+			let diffx = screenmx-screenpx;
+			let diffy = screenmy-screenpy;
+			let radius = 20;
+			let linegradient = -diffx/diffy;
+			let linec = screenmy-linegradient*screenmx;
+			let a = (Math.pow(linegradient,2)+parseInt(1));
+			let b = 2*linegradient*linec;
+			let c = Math.pow(linec,2)-Math.pow(radius,2);
+			console.log(" "+a+" "+b+" "+c);
+			let quadraticposx = (-b+Math.sqrt(Math.pow(b,2)-4*a*c))/(2*a)
+			let quadraticnegx = (-b-Math.sqrt(Math.pow(b,2)-4*a*c))/(2*a)
+			let posy = linegradient*quadraticposx+linec;
+			let negy = linegradient*quadraticnegx+linec;
+			console.log("Pos coords: "+quadraticposx+","+posy);
+			console.log("neg coords: "+quadraticnegx+","+negy);
+			let viewtrianglex1 = quadraticposx;
+			let viewtriangley1 = posy;
+			let viewtrianglex2 = quadraticnegx;
+			let viewtriangley2 = negy;
+			*/
+			let viewtrianglex0 = screenpx;
+			let viewtriangley0 = screenpy;
+			let viewtrianglex1 = screenpx+300;
+			let viewtriangley1 = screenpy-50;
+			let viewtrianglex2 = screenpx+300;
+			let viewtriangley2 = screenpy+50;
+			
 			test.position.x = mousex;
 			test.position.y = mousey;
+			thing.destroy();	
+			thing = new PIXI.Graphics();
+			thing.position.x = screenpx;
+			thing.position.y = screenpy;
+			thing.pivot.x = screenpx;
+			thing.pivot.y = screenpy;
+			if(screenmx-screenpx == 0){
+				if(screenmy-screenpy>0){
+					thing.rotation = Math.PI/2;
+				}else{
+					thing.rotation = -Math.PI/2;
+				}
+			}else{
+				
+				thing.rotation = Math.atan((screenmy-screenpy)/(screenmx-screenpx));
+				if(screenmx<screenpx){
+					thing.rotation +=Math.PI;
+				}
+			}
+			thing.beginFill()
+			.drawPolygon([-1000,-1000,1024,-1000,1024,1000,0,1000])
+			.drawPolygon([viewtrianglex0 ,viewtriangley0,viewtrianglex1 ,viewtriangley1,viewtrianglex2 ,viewtriangley2] )
+			.addHole();
+			HUDcontainer.addChild(thing);
+			stage.removeChild(HUDcontainer);
+			stage.addChild(HUDcontainer);
+			blackdrop.mask = thing;	
 		    //world update
 		    worldUpdates();
 		    //logic
