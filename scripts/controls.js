@@ -41,7 +41,7 @@
 			width:1,height:1,sprite:bulletsprite};
 			world.projectiles.push(bullet);
 		}
-		if(weapon==2){  
+		if(weapon==3){  
 		let diffx =  (mousex-player.x);
 		let diffy =  (mousey-player.y);
 		let ratio = diffy/diffx;

@@ -12,7 +12,7 @@
 			projectiles:ps
 		};
 		let player = {};
-		let drawnstars = new Array(10000);
+		let drawnstars = new Array(100);
 		//event listener
 		window.addEventListener("keydown", keypress, false);
 		window.addEventListener("keyup", keyup, false);
@@ -117,7 +117,7 @@
 			stage.addChild(bigstar2);
 			*/
 			starcontainer = new PIXI.ParticleContainer();
-			for (i = 0; i < 10000; i++) {
+			for (i = 0; i < 100; i++) {
 				let startex = PIXI.Texture.fromImage("assets/images/environment/star-0.png");
 				drawnstars[i] = new PIXI.Sprite(startex);
 				drawnstars[i].position.x = Math.random() * 1024;

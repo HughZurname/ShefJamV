@@ -22,10 +22,18 @@ function whatCollided(xloc, yloc, ewidth, eheight, currentfloorlist) {
 
 }
 
+function checkEntityCollisions(xl,yl,wl,hl, entitylist) {
+for(var e = 0; e<entitylist.length;e++){
+	var entity2 = entitylist[e];
+	if(rawCollide(xl,yl,wl,hl, entity2.x, entity2.y, entity2.width, entity2.height)){
+		return true;
+	}
+}
+	return false;
+}
 function intersectingEntity(entity1, entity2) {
 	return rawCollide(entity1.x, entity1.y, entity1.width, entity1.height, entity2.x, entity2.y, entity2.width, entity2.height);
 }
-
 function checkCollision(xloc, yloc, ewidth, eheight, currentfloorlist) {
 
 	for (let f = 0; f < currentfloorlist.length; f++) {
@@ -53,16 +61,25 @@ function physicsUpdate() {
 			if (entity.yvel <= 10) {		
 				currentprojectile.yvel+=0.98;
 			}
+			entity.xvel *= 0.9;
 		}
-		if(checkCollision(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.floorlist)){
+		if(checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)){
 			currentprojectile.sprite.destroy();
 			currentprojectile.removed = true;
 			world.projectiles.splice(world.projectiles.indexOf(currentprojectile),1);
 			p--;
 			//remove
 		}else{
-			currentprojectile.x += currentprojectile.xvel;
-			currentprojectile.y += currentprojectile.yvel;
+			if(checkCollision(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.floorlist)){
+				currentprojectile.sprite.destroy();
+				currentprojectile.removed = true;
+				world.projectiles.splice(world.projectiles.indexOf(currentprojectile),1);
+				p--;
+				//remove
+			}else{
+				currentprojectile.x += currentprojectile.xvel;
+				currentprojectile.y += currentprojectile.yvel;
+			}
 		}
 		if(!currentprojectile.removed){
 			currentprojectile.sprite.position.x = currentprojectile.x;

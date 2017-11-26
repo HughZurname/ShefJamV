@@ -93,13 +93,17 @@ function loadLevel(fileitem,continueornot){
 			if(type=="music"){
 				let sx = parseInt(components[4]);
 				let sy = 7-parseInt(components[5]);
-				sx*=64;sy*=64
+				sx*=64;sy*=64 	
 				let music = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"music",source:text};
 				console.log("added music");				
 				world.interacts.push(music);
 			}
 			if(type=="chain"){
 				let chain = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"chain",texture:text};				
+				world.interacts.push(chain);
+			}
+			if(type=="pipe"){
+				let pipe = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"pipe",texture:text};				
 				world.interacts.push(chain);
 			}
 			if(type=="enemy"){
@@ -145,14 +149,14 @@ function loadLevel(fileitem,continueornot){
 	}
 	for (let i = 0; i < world.interacts.length; i++) {
 		        let cfloor = world.interacts[i];
-				if(world.interacts[i].type == "chain"){
+				if(world.interacts[i].type == "chain" || world.interacts[i].type == "pipe"){
 					let panel = PIXI.Texture.fromImage(cfloor.texture);
 					panelsprite = new PIXI.Sprite(panel);
 					panelsprite.position.x = cfloor.x;
 					panelsprite.position.y = cfloor.y;
-				panelsprite.width = cfloor.width;
-				panelsprite.height = cfloor.height;
-				cfloor.sprite = panelsprite;
+					panelsprite.width = cfloor.width;
+					panelsprite.height = cfloor.height;
+					cfloor.sprite = panelsprite;
 					floorcontainer.addChild(panelsprite);
 				}
 	}
