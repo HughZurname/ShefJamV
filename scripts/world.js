@@ -21,7 +21,6 @@ function loadWorld(spawnx,spawny,filename) {
 	};
 	entities.push(player);
 	loadFromFile(world,filename,true);
-
 	//defaultWorld();
 }
 
@@ -91,7 +90,10 @@ function worldUpdates() {
 		if (entity.entitytype == "enemy"){
 //			Use object atributes istead of variable names
 			var distanceFrom = calculateDistance(player.x, player.y, entity.x, entity.y);
-			//console.log("Distance from bug = " + distanceFrom);
+			// console.log("Distance from bug = " + distanceFrom);
+			if (distanceFrom < 150){
+				//console.log("Sound of bug plays!");
+			}
 		}
 		
 	}

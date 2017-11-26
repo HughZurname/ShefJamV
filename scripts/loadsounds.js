@@ -1,13 +1,14 @@
-let sadSam;
-let bossBattle;
-let evenSadderSam;
-let menuMusic;		
+let songList = [
+    './assets/audio/sadSam.wav', 
+    './assets/audio/bossBattle.wav', 
+    './assets/audio/evenSadderSam.wav', 
+    './assets/audio/menuMusic.wav'
+]
+let playList;
 
-function setup() {
-    sadSam = sounds['./assets/audio/sadSam.wav']
-    bossBattle = sounds['./assets/audio/bossBattle.wav']
-    menuMusic = sounds['./assets/audio/menuMusic.wav']
-    evenSadderSam = sounds['./assets/audio/evenSadderSam.wav']
+sounds.load(songList)
+sounds.whenLoaded = setup
+
+function setup(sl = songList) {
+    return playList = sl.map(s => sounds[s])
 }
-sounds.load(['./assets/audio/sadSam.wav', './assets/audio/bossBattle.wav', './assets/audio/evenSadderSam.wav', './assets/audio/menuMusic.wav'], setup())
-sounds.whenLoaded = setup;
