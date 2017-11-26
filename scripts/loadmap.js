@@ -21,13 +21,16 @@ function readTextFile(filename,continueornot)
 function loadLevel(fileitem,continueornot){
 	let entities = new Array();
 		let floors = new Array();
+		let backgrounds = new Array();
 		let inters = new Array();
 		let ps = new Array();
+		let ls = new Array();
 	entities.push(player);
 	world.floorlist = floors;
 	world.interacts = inters;
 	world.entitylist = entities;
 	world.projectiles = ps;
+	world.lights = ls;
 	if(typeof entitycontainer !== 'undefined'){
   		entitycontainer.destroy();
 	}
@@ -57,6 +60,23 @@ function loadLevel(fileitem,continueornot){
 				console.log(finalX+" "+finalY);
 				let currentfloor = {x: finalX, y: finalY,width:w,height:h,texture:text};
 				world.floorlist.push(currentfloor);
+			}	
+			if(type=="background"){
+				let sx = 0;
+				let sy = 0;
+				let w = 64;
+				let h = 64;
+				if(components.length>=5){
+					sx = components[4];
+					sy = components[5];
+					w = components[6];
+					h = components[7];	
+				}
+				let finalX = ((64*xcoordGrid)+parseInt(sx));
+				let finalY = ((64*ycoordGrid)+parseInt(sy));
+				console.log(finalX+" "+finalY);
+				let currentfloor = {x: finalX, y: finalY,width:w,height:h,texture:text};
+				backgrounds.push(currentfloor);
 			}
 			if(type=="exit"){
 				let sx = parseInt(components[4]);
@@ -66,6 +86,17 @@ function loadLevel(fileitem,continueornot){
 				texture:"assets/images/Shittybullet.png"};
 				console.log("added interact");				
 				world.interacts.push(exit);
+			}if(type=="light"){
+				let light = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"level",texture:"assets/images/light.png"};			
+				world.lights.push(light);
+			}
+			if(type=="music"){
+				let sx = parseInt(components[4]);
+				let sy = 7-parseInt(components[5]);
+				sx*=64;sy*=64
+				let music = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"music",source:text};
+				console.log("added music");				
+				world.interacts.push(music);
 			}
 			if(type=="chain"){
 				let chain = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"chain",texture:text};				
@@ -101,16 +132,29 @@ function loadLevel(fileitem,continueornot){
 			cfloor.sprite = panelsprite;
 		        floorcontainer.addChild(panelsprite);
 	}
-	for (let i = 0; i < world.interacts.length; i++) {
-		        let cfloor = world.interacts[i];
+	for (let i = 0; i < backgrounds.length; i++) {
+		        let cfloor = backgrounds[i];
 		        let panel = PIXI.Texture.fromImage(cfloor.texture);
 		        panelsprite = new PIXI.Sprite(panel);
 		        panelsprite.position.x = cfloor.x;
 		        panelsprite.position.y = cfloor.y;
-			panelsprite.width = cfloor.width;
-			panelsprite.height = cfloor.height;
-			cfloor.sprite = panelsprite;
+				panelsprite.width = cfloor.width;
+				panelsprite.height = cfloor.height;
+				 cfloor.sprite = panelsprite;
 		        floorcontainer.addChild(panelsprite);
+	}
+	for (let i = 0; i < world.interacts.length; i++) {
+		        let cfloor = world.interacts[i];
+				if(world.interacts[i].type == "chain"){
+					let panel = PIXI.Texture.fromImage(cfloor.texture);
+					panelsprite = new PIXI.Sprite(panel);
+					panelsprite.position.x = cfloor.x;
+					panelsprite.position.y = cfloor.y;
+				panelsprite.width = cfloor.width;
+				panelsprite.height = cfloor.height;
+				cfloor.sprite = panelsprite;
+					floorcontainer.addChild(panelsprite);
+				}
 	}
 	stage.addChild(floorcontainer);
 	console.log(continueornot);
