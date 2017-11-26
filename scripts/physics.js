@@ -26,10 +26,10 @@ function checkEntityCollisions(xl,yl,wl,hl, entitylist) {
 for(var e = 0; e<entitylist.length;e++){
 	var entity2 = entitylist[e];
 	if(rawCollide(xl,yl,wl,hl, entity2.x, entity2.y, entity2.width, entity2.height)){
-		return true;
+		return [true,entity2];
 	}
 }
-	return false;
+	return [false,null];
 }
 function intersectingEntity(entity1, entity2) {
 	return rawCollide(entity1.x, entity1.y, entity1.width, entity1.height, entity2.x, entity2.y, entity2.width, entity2.height);
@@ -63,13 +63,18 @@ function physicsUpdate() {
 			}
 			entity.xvel *= 0.9;
 		}
-		if(checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)){
-			currentprojectile.sprite.destroy();
-			currentprojectile.removed = true;
-			world.projectiles.splice(world.projectiles.indexOf(currentprojectile),1);
-			p--;
+		if(checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[0]){
+			if(checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[1].entitytype == "player"){
+				
+			}else{
+				//console.log("removing due to entity collision"+checkEntityCollisions(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.entitylist)[1].type);
+				currentprojectile.sprite.destroy();
+				currentprojectile.removed = true;
+				world.projectiles.splice(world.projectiles.indexOf(currentprojectile),1);
+				p--;
+			}
 			//remove
-		}else{
+		}
 			if(checkCollision(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, world.floorlist)){
 				currentprojectile.sprite.destroy();
 				currentprojectile.removed = true;
@@ -80,7 +85,7 @@ function physicsUpdate() {
 				currentprojectile.x += currentprojectile.xvel;
 				currentprojectile.y += currentprojectile.yvel;
 			}
-		}
+		
 		if(!currentprojectile.removed){
 			currentprojectile.sprite.position.x = currentprojectile.x;
 			currentprojectile.sprite.position.y = currentprojectile.y;
