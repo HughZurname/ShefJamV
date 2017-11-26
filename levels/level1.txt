@@ -16,5 +16,5 @@
 0 2 solid assets/images/environment/panel-MU-large.png
 0 3 solid assets/images/environment/panel-MU-large.png
 #Exit
-9 1 exit levels/level_boss.txt -1 1
+9 1 exit levels/level2.txt -1 1
 9 2 exit levels/level2.txt -1 1
