@@ -122,9 +122,8 @@ world.projectiles.push(fallingblock);
 			}
 		
 	}
-	for (let e = 0; e < entities.length; e++) {
-		entity = entities[e];
-
+	for (let e = 0; e < world.entitylist.length; e++) {
+		entity = world.entitylist[e];
 		//physics
 		//gravity
 		if (entity.yvel <= 10) {
@@ -140,6 +139,7 @@ world.projectiles.push(fallingblock);
 
 			if (checkCollision(entity.x + entity.xvel, entity.y, entity.width, entity.height, floorlist)) {
 				entity.xvel = 0;
+				console.log("Collided X");
 				//console.log(player.xvel);
 				if (checkCollision(entity.x, entity.y + entity.yvel, entity.width, entity.height, floorlist)) {
 					entity.yvel = 0;
@@ -161,8 +161,10 @@ world.projectiles.push(fallingblock);
 		if (entity.entitytype == "player") {
 			playersprite.position.x = entity.x;
 			playersprite.position.y = entity.y;
+		}else{
+			entity.sprite.position.x = entity.x;
+			entity.sprite.position.y = entity.y;
 		}
-
 
 	}
 

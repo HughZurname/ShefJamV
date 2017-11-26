@@ -113,4 +113,5 @@ function worldUpdates() {
 		}
 		
 	}
+	world.noise = new Array();
 }
