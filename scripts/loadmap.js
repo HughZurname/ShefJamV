@@ -7,7 +7,7 @@ function readTextFile(filename,continueornot)
 	  if (xhr.readyState === 4) {
 	    if (xhr.status === 200) {
 	      console.log(xhr.responseText);
-		return loadLevel(xhr.responseText,continueornot);
+		  loadLevel(xhr.responseText,continueornot);
 	    } else {
 	      console.error(xhr.statusText);
 	    }
@@ -193,5 +193,5 @@ function loadLevel(fileitem,continueornot){
 }
 function loadFromFile(world, levelname,continueornot){
 	console.log(continueornot);
-	let fileitem = readTextFile(levelname,continueornot);	
+	readTextFile(levelname,continueornot);	
 }
