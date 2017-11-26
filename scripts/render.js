@@ -43,4 +43,15 @@ function render(){
 	}if(health<=0){
 		heartsprites[0].alpha = 0;
 	}
+	if(health>80){
+		heartsprites[4].alpha = 1;
+	}if(health>60){
+		heartsprites[3].alpha = 1;
+	}if(health>40){
+		heartsprites[2].alpha = 1;
+	}if(health>20){
+		heartsprites[1].alpha = 1;
+	}if(health>0){
+		heartsprites[0].alpha = 1;
+	}
 }

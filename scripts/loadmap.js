@@ -104,8 +104,7 @@ function loadLevel(fileitem,continueornot){
 			}if(type=="boss"){
 				let finalX = (64*xcoordGrid);
 				let finalY = (64*ycoordGrid);
-				boss = {x:finalX,y:finalY, width:128, height:128};
-				
+				boss = {x:finalX,y:finalY-64, width:128, height:128};
 			}
 			if(type=="exit"){
 				let sx = parseInt(components[4]);

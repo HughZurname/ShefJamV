@@ -80,8 +80,8 @@ function worldUpdates() {
 		if(bossshootability>0){
 			bossshootability-=1;
 		}else{
-			bossshootability = 100;
-			for(c = 0;c<20; c++){   
+			bossshootability = 300;
+			for(c = 0;c<5; c++){   
 				let bullettexture = PIXI.Texture.fromImage("assets/images/environment/button.png");
 				bulletsprite = new PIXI.Sprite(bullettexture);
 				bulletsprite.position.x = boss.x;
@@ -89,7 +89,8 @@ function worldUpdates() {
 				bulletsprite.width = 50;
 				bulletsprite.height = 50;
 				stage.addChild(bulletsprite);
-				let cpro = {x:boss.x,y:boss.y,width:50,height:50,xvel:Math.random(),yvel:Math.random(),type:"monster",sprite:bulletsprite};
+				let cpro = {x:boss.x,y:boss.y,width:50,height:50,xvel:Math.random()*50-25,yvel:Math.random()*50-25,type:"monster",sprite:bulletsprite};
+				world.projectiles.push(cpro);
 				
 			}
 			

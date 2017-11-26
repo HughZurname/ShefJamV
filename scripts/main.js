@@ -37,6 +37,15 @@
 			playersprite.width = 48;
 		    playersprite.height = 96;
 		    stage.addChild(playersprite); 
+			
+			 let bosstexture = PIXI.Texture.fromImage("assets/images/enemies/boss.png");
+		 bosssprite = new PIXI.Sprite(bosstexture);
+		    bosssprite.position.x = 0;
+		    bosssprite.position.y = 0;  
+			bosssprite.width = 128;
+		    bosssprite.height = 128;
+		    //stage.addChild(bosssprite); 
+			
 			 let te = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");
 		    test = new PIXI.Sprite(te);
 		    test.position.x = 0;
@@ -248,7 +257,12 @@
 				player.x = respawnx;
 				player.y = respawny;
 			}
-			
+			if(typeof boss !== 'undefined'){
+				bosssprite.position.x = boss.x;
+				bosssprite.position.y = boss.y;
+				stage.removeChild(bosssprite);
+				stage.addChild(bosssprite);
+			}
 		    //logic
 			if(justdamaged>0){justdamaged-=1;}
 			playersprite.alpha = 1-((justdamaged%10)/10);
