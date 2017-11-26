@@ -26,6 +26,7 @@ function loadLevel(fileitem,continueornot){
 		let ps = new Array();
 		let ls = new Array();
 		let n = new Array();
+		
 	entities.push(player);
 	world.floorlist = floors;
 	world.interacts = inters;
@@ -100,6 +101,11 @@ function loadLevel(fileitem,continueornot){
 				console.log(finalX+" "+finalY);
 				let currentfloor = {x: finalX, y: finalY,width:w,height:h,texture:text};
 				backgrounds.push(currentfloor);
+			}if(type=="boss"){
+				let finalX = (64*xcoordGrid);
+				let finalY = (64*ycoordGrid);
+				boss = {x:finalX,y:finalY, width:128, height:128};
+				
 			}
 			if(type=="exit"){
 				let sx = parseInt(components[4]);
