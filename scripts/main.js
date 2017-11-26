@@ -215,7 +215,8 @@
 			}
 
 
-
+			stage.removeChild(playersprite);
+			stage.addChild(playersprite);
 			stage.removeChild(HUDcontainer);
 			stage.addChild(HUDcontainer);
 

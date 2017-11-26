@@ -9,6 +9,9 @@
 7 0 solid assets/images/environment/panel-M-large.png
 8 0 solid assets/images/environment/panel-R-wires.png
 #Left Wall
+2 1 music assets/audio/sadSam.wav
+5 1 music assets/audio/bossBattle.wav
+#5 1 music stop
 0 1 solid assets/images/environment/panel-MU-large.png
 0 2 solid assets/images/environment/panel-MU-large.png
 0 3 solid assets/images/environment/panel-MU-large.png

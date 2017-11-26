@@ -82,6 +82,13 @@ function worldUpdates() {
 				player.x = interactable.spawnx;
 				player.y = interactable.spawny;
 			}
+			if(interactable.type == "music"){
+				if(interactable.source=="stop"){
+					stopMusic();
+				}else{
+					music(interactable.source,playList[songList.indexOf(interactable.source)]);
+				}
+			}
 		}
 	}
 	
