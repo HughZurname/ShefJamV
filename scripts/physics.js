@@ -46,6 +46,36 @@ function checkCollision(xloc, yloc, ewidth, eheight, currentfloorlist) {
 
 
 function physicsUpdate() {
+	for(let p = 0; p<world.projectiles.length;p++){
+
+		let currentprojectile = world.projectiles[p];
+			for(let m = 0; m<world.interacts.length;m++){
+
+				let interactable = world.interacts[m];
+				if(rawCollide(currentprojectile.x,currentprojectile.y,currentprojectile.width,currentprojectile.height,
+					interactable.x,interactable.y,interactable.width,interactable.height)){
+					if(interactable.type == "chain"){
+						let floortodrop = whatCollided(interactable.x+32,interactable.y+96,interactable.width,interactable.height,world.floorlist);
+						world.floorlist.splice(world.floorlist.indexOf(floortodrop),-1);
+						let fallingblock = {x:floortodrop.x,y:floortodrop.y,width:floortodrop.width,height:floortodrop.height,xvel:0,yvel:1,type:"fallingblock",sprite:floortodrop.sprite};
+						world.projectiles.push(fallingblock);
+					}
+				}
+
+
+			}
+		if(checkCollision(currentprojectile.x + currentprojectile.xvel, currentprojectile.y + currentprojectile.yvel, currentprojectile.width, currentprojectile.height, floorlist)){
+			world.projectiles.splice(world.projectiles.indexOf(currentprojectile),1);
+			p--;
+			//remove
+		}else{
+			currentprojectile.x += currentprojectile.xvel;
+			currentprojectile.y += currentprojectile.yvel;
+		}
+		currentprojectile.sprite.position.x = currentprojectile.x;
+		currentprojectile.sprite.position.y = currentprojectile.y;
+		
+	}
 	for (let e = 0; e < entities.length; e++) {
 		entity = entities[e];
 

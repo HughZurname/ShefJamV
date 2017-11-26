@@ -84,7 +84,7 @@ function worldUpdates() {
 			}
 		}
 	}
-
+	
 	for(let m = 0; m<world.entitylist.length;m++){
 		let entity = world.entitylist[m];
 		entityBehavior(entity);
