@@ -13,8 +13,8 @@
 		mousey = screenmy+offsety;
 	}
 	function mousemove(evt){
-		screenmx = evt.clientX;
-		screenmy = evt.clientY;
+		screenmx = evt.offsetX;
+		screenmy = evt.offsetY;
 		
 	}	
 	function keyup(evt){
