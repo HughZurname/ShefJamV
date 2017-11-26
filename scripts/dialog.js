@@ -5,7 +5,6 @@ function loadFile(filename) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 return splitText(xhr.responseText);
-                // return xhr.responseText;
             } else {
                 console.error(xhr.statusText);
             }
@@ -17,35 +16,23 @@ function loadFile(filename) {
     xhr.send(null);
 }
 
-
-loadFile("../assets/script/wakeup-sequence.txt");
-let textSpace = document.getElementById("textSpace");
 let lineNo = 0;
-let testArray;
-
-function logText(fileText) {
-    console.log("The file text is:   \n" + fileText);
-
-}
+let textArray;
 
 function splitText(fileText) {
     let linesArray = fileText.split("\n");
-    testArray = linesArray;
+    textArray = linesArray;
 
 }
 
-
-setTimeout(function () {
-    for (i = 0; i < 10; i++) {
-        textSpace.innerHTML += testArray[lineNo] + "<br>"
+function printLines(textSpace = document.getElementById("textSpace")) {
+    for (i = 0; i < textArray.length; i++) {
+        textSpace.innerHTML += textArray[lineNo] + "<br>"
         lineNo++;
     }
-}, 5000)
+}
 
-// document.addEventListener('keypress', function (e) {
-//     var key = e.which || e.keyCode;
-//     if (key === 13) { // 13 is enter
-//         testArray[lineNo].split(" ").map(w => textSpace.innerHTML += w + "");
-//         lineNo++;
-//     }
-// });
+function displayDialogue(file = "../assets/script/wakeup-sequence.txt") {
+    loadFile(file);
+    !(gamestate == "menu") && printLines()
+}
