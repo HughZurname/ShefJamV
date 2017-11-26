@@ -62,12 +62,13 @@ function loadLevel(fileitem,continueornot){
 				let sx = parseInt(components[4]);
 				let sy = 7-parseInt(components[5]);
 				sx*=64;sy*=64
-				let exit = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"exit",level:text,spawnx:sx,spawny:sy};
+				let exit = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"exit",level:text,spawnx:sx,spawny:sy, 
+				texture:"assets/images/Shittybullet.png"};
 				console.log("added interact");				
 				world.interacts.push(exit);
 			}
 			if(type=="chain"){
-				let chain = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"chain"};				
+				let chain = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"chain",texture:text};				
 				world.interacts.push(chain);
 			}
 			if(type=="enemy"){
@@ -91,6 +92,17 @@ function loadLevel(fileitem,continueornot){
 	floorcontainer = new PIXI.Container();
 	for (let i = 0; i < floors.length; i++) {
 		        let cfloor = floors[i];
+		        let panel = PIXI.Texture.fromImage(cfloor.texture);
+		        panelsprite = new PIXI.Sprite(panel);
+		        panelsprite.position.x = cfloor.x;
+		        panelsprite.position.y = cfloor.y;
+			panelsprite.width = cfloor.width;
+			panelsprite.height = cfloor.height;
+			cfloor.sprite = panelsprite;
+		        floorcontainer.addChild(panelsprite);
+	}
+	for (let i = 0; i < world.interacts.length; i++) {
+		        let cfloor = world.interacts[i];
 		        let panel = PIXI.Texture.fromImage(cfloor.texture);
 		        panelsprite = new PIXI.Sprite(panel);
 		        panelsprite.position.x = cfloor.x;
