@@ -5,6 +5,18 @@
 		keylist.push(keyCode);
 		
 	}
+	function recalculateMouse(){
+		
+		var offsetx = player.x+player.width/2-512;
+		var offsety = player.y+player.height/2-400;
+		mousex = screenmx+offsetx;
+		mousey = screenmy+offsety;
+	}
+	function mousemove(evt){
+		screenmx = evt.offsetX;
+		screenmy = evt.offsetY;
+		
+	}	
 	function keyup(evt){
 		var keyCode = evt.which;
 		while(keylist.indexOf(keyCode) > -1){
