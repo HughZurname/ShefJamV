@@ -1,0 +1,22 @@
+#Floor
+0 0 solid assets/images/environment/panel-L-small.png
+1 0 solid assets/images/environment/panel-M-large.png
+2 -1 solid assets/images/environment/panel-M-large.png
+3 -2 solid assets/images/environment/panel-M-large.png
+7 -3 solid assets/images/environment/panel-M-open.png
+8 -3 solid assets/images/environment/panel-M-open.png
+9 -2 solid assets/images/environment/panel-M-large.png
+10 -3 solid assets/images/environment/panel-M-large.png
+11 -4 solid assets/images/environment/panel-M-large.png
+14 -4 solid assets/images/environment/panel-M-large.png
+#Left Wall
+#2 1 music assets/audio/sadSam.wav
+#5 1 music assets/audio/evenSadderSam.wav
+#5 1 music stop
+0 1 solid assets/images/environment/panel-MU-large.png
+0 2 solid assets/images/environment/panel-MU-large.png
+0 3 solid assets/images/environment/panel-MU-large.png
+10 -2 enemy assets/images/enemies/bug-0.png
+#Exit
+15 -3 exit levels/level7.txt 1 1
+15 -2 exit levels/level7.txt 1 1
