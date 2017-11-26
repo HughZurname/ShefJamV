@@ -88,6 +88,23 @@ function loadLevel(fileitem,continueornot){
 				texture:"assets/images/Shittybullet.png"};
 				console.log("added interact");				
 				world.interacts.push(exit);
+			}if(type=="spike"){
+				let spike = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"spike",level:text, texture:"assets/images/environment/spike.png"};
+				console.log("added interact");				
+				world.interacts.push(spike);
+			}if(type=="key"){
+				let key = {x: 64*xcoordGrid+16, y: 64*ycoordGrid+16,width:32,height:32,type:"key",sambob:100, texture:"assets/images/hud/keycard-pickup.png"};
+				console.log("added interact");				
+				world.interacts.push(key);
+			}if(type=="door"){
+				let door = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"door", texture:text};
+				console.log("added interact");	
+				let lowerfloor = {x: 64*xcoordGrid+16, y: 64*ycoordGrid,width:64,height:64,texture:"assets/images/environment/door-bottom.png"};
+				let higherfloor = {x: 64*xcoordGrid+16, y: 64*(ycoordGrid-1),width:64,height:64,texture:"assets/images/environment/door-top.png"};
+				door.floors = new Array(2);
+				door.floors[0] = lowerfloor;world.floorlist.push(lowerfloor);
+				door.floors[1] = higherfloor;world.floorlist.push(higherfloor);
+				world.interacts.push(door);
 			}if(type=="light"){
 				let light = {x: 64*xcoordGrid, y: 64*ycoordGrid,width:64,height:64,type:"level",texture:"assets/images/light.png"};			
 				world.lights.push(light);
@@ -172,7 +189,7 @@ function loadLevel(fileitem,continueornot){
 	}
 	for (let i = 0; i < world.interacts.length; i++) {
 		        let cfloor = world.interacts[i];
-				if(world.interacts[i].type == "chain" || world.interacts[i].type == "pipe"){
+				if(world.interacts[i].type == "chain" || world.interacts[i].type == "pipe"|| world.interacts[i].type == "spike"|| world.interacts[i].type == "key"){
 					let panel = PIXI.Texture.fromImage(cfloor.texture);
 					panelsprite = new PIXI.Sprite(panel);
 					panelsprite.position.x = cfloor.x;

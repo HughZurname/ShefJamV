@@ -16,7 +16,7 @@ function loadWorld(spawnx,spawny,filename) {
 		xvel: 0,
 		yvel: 0,
 		width: 32,
-		height: 32,
+		height: 64,
 		entitytype: "player"
 	};
 	entities.push(player);
@@ -75,6 +75,11 @@ function calculateDistance(playerX,playerY,entityX,entityY)
 function worldUpdates() {
 	for(let m = 0; m<world.interacts.length;m++){
 		let interactable = world.interacts[m];
+		if(interactable.type == "key"){
+			interactable.sambob+=1;
+			interactable.sambob=interactable.sambob%100;
+			interactable.sprite.position.y=interactable.y+(Math.cos(interactable.sambob*Math.PI/50)*10);
+		}
 		if(rawCollide(player.x,player.y,player.width,player.height,interactable.x,interactable.y,interactable.width,interactable.height)){
 			if(interactable.type == "exit"){
 				loadspri.alpha = 1;
@@ -88,6 +93,30 @@ function worldUpdates() {
 				}else{
 					music(interactable.source,playList[songList.indexOf(interactable.source)]);
 				}
+			}
+			if(interactable.type == "spike"){
+				player.damagedeath = 100;
+				player.health -= 100;
+			}			
+			if(interactable.type == "key"){
+				interactable.sprite.destroy();
+				world.interacts.splice(m,1);
+				m--;
+				keycardcount+=1;
+				console.log("Keycard picked up");
+			}
+			if(interactable.type == "door"){
+					if(keylist.includes(87)){//use
+						if(keycardcount>=1){
+							keycardcount-=1;
+							toremove1 = interactable.floors[0];
+							toremove2 = interactable.floors[1];
+							toremove1.sprite.alpha = 0.2;
+							toremove2.sprite.alpha = 0.2;
+							world.floorlist.splice(world.floorlist.indexOf(toremove1),1);
+							world.floorlist.splice(world.floorlist.indexOf(toremove2),1);
+						}
+					}
 			}
 		}
 	}

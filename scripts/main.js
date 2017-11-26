@@ -5,6 +5,7 @@
 		let floors = new Array();
 		let inters = new Array();
 		let ps = new Array();
+		let keycardcount = 0;
 		let world = {
 			entitylist: entities,
 			floorlist: floors,
@@ -26,7 +27,7 @@
 
 
 			
-		    let playertexture = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");
+		    let playertexture = PIXI.Texture.fromImage("assets/images/player/player.png");
 		    playersprite = new PIXI.Sprite(playertexture);
 		    playersprite.position.x = 0;
 		    playersprite.position.y = 0;
@@ -136,10 +137,18 @@
 			menucontainer = new PIXI.Container();
 			let menubackground = PIXI.Texture.fromImage("assets/images/hud/blackbox.png");
 			menu = new PIXI.Sprite(menubackground);
-			
+			let menuforeground = PIXI.Texture.fromImage("assets/images/hud/menu-splash.png");
+			menufore = new PIXI.Sprite(menuforeground);
+			menufore.x = 0;
+			menufore.y = 0;
+			menufore.width = 1024;
+			menufore.height = 512;
+			menu.x = 0;
+			menu.y = 0;
 			menu.width = 1024;
 			menu.height = 512;
 			menucontainer.addChild(menu);
+			menucontainer.addChild(menufore);
 				
 			startGame();
 		}

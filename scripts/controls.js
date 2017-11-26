@@ -76,9 +76,12 @@
 	//1 = torch //2 = revolver //3 = flaregun //4=noisemaker
 	weapon = wnumber;
 	}
+	
+	function use(){}
+	
 	function keycheck(){
 
-		if(keylist.includes(87)){
+		if(keylist.includes(32)){
 			jump();
 		}	
 		if(keylist.includes(65)){
@@ -108,6 +111,9 @@
 		if(keylist.includes(52)){//4
 			switchWeapon(2);
 			keylist.splice(keylist.indexOf(52),1);
+		}	
+		if(keylist.includes(87)){//use
+			use();
 		}		
 	}	
 
