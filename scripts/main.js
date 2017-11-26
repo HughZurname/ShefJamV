@@ -14,6 +14,7 @@
 		//event listener
 		window.addEventListener("keydown", keypress, false);
 		window.addEventListener("keyup", keyup, false);
+		window.addEventListener("mousemove", mousemove, false);
 		let health = 100;
 		let heartsprites = {};
 		function continueLoad() {
@@ -26,7 +27,12 @@
 		    playersprite = new PIXI.Sprite(playertexture);
 		    playersprite.position.x = 0;
 		    playersprite.position.y = 0;
-		    stage.addChild(playersprite);
+		    stage.addChild(playersprite); 
+			 let te = PIXI.Texture.fromImage("assets/images/environment/shittybox.png");
+		    test = new PIXI.Sprite(te);
+		    test.position.x = 0;
+		    test.position.y = 0;
+		    stage.addChild(test);
 		//HUD
 			HUDcontainer = new PIXI.Container();
 			for(let h = 0; h<5; h++){
@@ -70,10 +76,16 @@
 			stage.addChild(starcontainer);
 			loadWorld(80, 300, "levels/level1.txt");
 		}
-
+		let mousex = 0;
+		let mousey = 0;
+		let screenmx = 0;
+		let screenmy = 0;
 		function update() {
 		    //input
 		    keycheck();
+		    recalculateMouse();
+			test.position.x = mousex;
+			test.position.y = mousey;
 		    //world update
 		    worldUpdates();
 		    //logic
