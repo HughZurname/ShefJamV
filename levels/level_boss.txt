@@ -1,5 +1,5 @@
 #Floor
-0 0 solid assets/images/environment/panel-BL-large.png
+0 0 solid assets/images/environment/panel-BL-corner.png
 1 0 solid assets/images/environment/panel-M-large.png
 2 0 solid assets/images/environment/panel-M-large.png
 3 0 solid assets/images/environment/panel-M-large.png
@@ -11,7 +11,7 @@
 9 0 solid assets/images/environment/panel-M-large.png
 10 0 solid assets/images/environment/panel-M-large.png
 11 0 solid assets/images/environment/panel-M-large.png
-12 0 solid assets/images/environment/panel-BR-large.png
+12 0 solid assets/images/environment/panel-BR-corner.png
 #leftwall
 0 1 solid assets/images/environment/panel-MU-large.png
 0 2 solid assets/images/environment/panel-MU-large.png
@@ -39,7 +39,7 @@
 12 11 solid assets/images/environment/panel-MU-large.png
 12 12 solid assets/images/environment/panel-MU-large.png
 #roof
-0 13 solid assets/images/environment/panel-TL-large.png
+0 13 solid assets/images/environment/panel-TL-corner.png
 1 13 solid assets/images/environment/panel-M-large.png
 2 13 solid assets/images/environment/panel-M-large.png
 3 13 solid assets/images/environment/panel-M-large.png
@@ -51,5 +51,10 @@
 9 13 solid assets/images/environment/panel-M-large.png
 10 13 solid assets/images/environment/panel-M-large.png
 11 13 solid assets/images/environment/panel-M-large.png
-12 13 solid assets/images/environment/panel-TR-large.png
+12 13 solid assets/images/environment/panel-TR-corner.png
+#jump spots
+~ 0 13 13 0 assets/images/environment/background-tile.png
+
+
+
 #Exit
